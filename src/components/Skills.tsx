@@ -6,12 +6,12 @@ const skillCategories = [
   {
     title: 'Frontend',
     skills: [
-      { name: 'React', level: 'Avanzado' },
-      { name: 'Next.js', level: 'Avanzado' },
+      { name: 'React', level: 'Intermedio' },
+      { name: 'Next.js', level: 'Intermedio' },
       { name: 'TypeScript', level: 'Avanzado' },
       { name: 'JavaScript', level: 'Avanzado' },
       { name: 'TailwindCSS', level: 'Avanzado' },
-      { name: 'SCSS', level: 'Intermedio' },
+      { name: 'SCSS', level: 'Avanzado' },
       { name: 'HTML5', level: 'Avanzado' },
       { name: 'CSS3', level: 'Avanzado' },
     ],

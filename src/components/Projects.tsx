@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { ExternalLink, Github } from 'lucide-react';
 
 const projects = [
@@ -16,8 +16,8 @@ const projects = [
   },
   {
     title: 'Gym Ecommerce Hub',
-    description: 'E-commerce especializado para gimnasios con catálogo de productos y sistema de gestión. Migración de Firebase a Supabase.',
-    tech: ['React', 'TypeScript', 'Supabase'],
+    description: 'E-commerce para tienda fitness en México con catálogo de suplementos y creatinas, más panel admin con analítica de tráfico, registros, inventario y top ventas. Gestión de contenidos y promociones, y automatizaciones para agenda, mensajes, captura de leads y reportes.',
+    tech: ['React', 'TypeScript', 'Supabase', 'n8n'],
     image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&h=800&fit=crop',
     liveUrl: 'https://gym-ecommerce-hub.vercel.app/',
     githubUrl: 'https://github.com/juanjosbg/gymEcommerce-hub',
@@ -27,7 +27,7 @@ const projects = [
   {
     title: 'GP3Digital Web',
     description: 'Sitio web corporativo moderno para agencia de marketing digital con diseño responsive y optimizado para SEO.',
-    tech: ['React', 'TailwindCSS', 'Vercel'],
+    tech: ['React', 'TailwindCSS', 'Vercel', 'Strapy', 'n8n'],
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=800&fit=crop',
     liveUrl: 'https://gp3-app.vercel.app/',
     githubUrl: 'https://github.com/Gp3Marketing/Gp3App',
@@ -71,6 +71,22 @@ const PhoneMockup = ({ image, title }: { image: string; title: string }) => (
 const Projects = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const [expandedDescriptions, setExpandedDescriptions] = useState<Record<string, boolean>>({});
+  const descriptionLimit = 170;
+
+  const toggleDescription = (title: string) => {
+    setExpandedDescriptions((prev) => ({
+      ...prev,
+      [title]: !prev[title],
+    }));
+  };
+
+  const getDescriptionPreview = (text: string) => {
+    if (text.length <= descriptionLimit) {
+      return text;
+    }
+    return `${text.slice(0, descriptionLimit).trim()}...`;
+  };
 
   const featuredProjects = projects.filter(p => p.featured);
   const otherProjects = projects.filter(p => !p.featured);
@@ -129,9 +145,21 @@ const Projects = () => {
                   </span>
                 </div>
                 
-                <p className="text-muted-foreground mb-6 leading-relaxed text-lg">
-                  {project.description}
+                <p className="text-muted-foreground mb-2 leading-relaxed text-lg">
+                  {expandedDescriptions[project.title]
+                    ? project.description
+                    : getDescriptionPreview(project.description)}
                 </p>
+                {project.description.length > descriptionLimit && (
+                  <button
+                    type="button"
+                    onClick={() => toggleDescription(project.title)}
+                    className="text-sm font-medium text-primary hover:text-primary/80 transition-colors mb-6"
+                    aria-expanded={expandedDescriptions[project.title] ?? false}
+                  >
+                    {expandedDescriptions[project.title] ? 'Leer menos' : 'Leer mas'}
+                  </button>
+                )}
 
                 {/* Tech Stack */}
                 <div className="flex flex-wrap gap-2 mb-8">
@@ -198,9 +226,21 @@ const Projects = () => {
                     {project.status}
                   </span>
                 </div>
-                <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
-                  {project.description}
+                <p className="text-muted-foreground text-sm mb-2 leading-relaxed">
+                  {expandedDescriptions[project.title]
+                    ? project.description
+                    : getDescriptionPreview(project.description)}
                 </p>
+                {project.description.length > descriptionLimit && (
+                  <button
+                    type="button"
+                    onClick={() => toggleDescription(project.title)}
+                    className="text-xs font-medium text-primary hover:text-primary/80 transition-colors mb-4"
+                    aria-expanded={expandedDescriptions[project.title] ?? false}
+                  >
+                    {expandedDescriptions[project.title] ? 'Leer menos' : 'Leer mas'}
+                  </button>
+                )}
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tech.map((tech) => (
                     <span key={tech} className="text-xs px-2 py-1 rounded-lg bg-muted text-muted-foreground">

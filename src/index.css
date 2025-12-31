@@ -15,7 +15,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 9%;
 
-    --primary: 0 72% 45%;
+    --primary: 212 90% 52%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 0 0% 96%;
@@ -32,12 +32,12 @@
 
     --border: 0 0% 90%;
     --input: 0 0% 90%;
-    --ring: 0 72% 45%;
+    --ring: 212 90% 52%;
 
     --radius: 0.75rem;
 
     /* Premium tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(0 72% 45%) 0%, hsl(0 65% 35%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(212 90% 52%) 0%, hsl(215 85% 42%) 100%);
     --gradient-hero: linear-gradient(180deg, hsl(0 0% 98%) 0%, hsl(0 0% 95%) 100%);
     --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(0 0% 98%) 100%);
     --shadow-subtle: 0 1px 3px hsl(0 0% 0% / 0.04), 0 4px 12px hsl(0 0% 0% / 0.04);
@@ -56,7 +56,7 @@
     --popover: 0 0% 7%;
     --popover-foreground: 0 0% 95%;
 
-    --primary: 0 72% 50%;
+    --primary: 212 90% 55%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 0 0% 10%;
@@ -73,10 +73,10 @@
 
     --border: 0 0% 14%;
     --input: 0 0% 14%;
-    --ring: 0 72% 50%;
+    --ring: 212 90% 55%;
 
     /* Premium tokens dark */
-    --gradient-primary: linear-gradient(135deg, hsl(0 72% 50%) 0%, hsl(0 65% 40%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(212 90% 55%) 0%, hsl(215 85% 45%) 100%);
     --gradient-hero: linear-gradient(180deg, hsl(0 0% 4%) 0%, hsl(0 0% 6%) 100%);
     --gradient-subtle: linear-gradient(180deg, hsl(0 0% 7%) 0%, hsl(0 0% 5%) 100%);
     --shadow-subtle: 0 1px 3px hsl(0 0% 0% / 0.2), 0 4px 12px hsl(0 0% 0% / 0.2);
@@ -135,7 +135,7 @@
 
   .btn-primary:hover {
     @apply scale-[1.02] shadow-lg;
-    box-shadow: 0 8px 30px hsl(0 72% 50% / 0.35);
+    box-shadow: 0 8px 30px hsl(212 90% 55% / 0.35);
   }
 
   .btn-secondary {
@@ -232,7 +232,7 @@
 
   /* Glow effect */
   .glow-primary {
-    box-shadow: 0 0 60px hsl(0 72% 50% / 0.15);
+    box-shadow: 0 0 60px hsl(212 90% 55% / 0.15);
   }
 
   /* Tech grid pattern */
