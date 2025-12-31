@@ -6,7 +6,7 @@ import { ExternalLink, Github } from 'lucide-react';
 const projects = [
   {
     title: 'Loki Ecommerce',
-    description: 'Plataforma e-commerce completa con carrito de compras, gestión de productos y pagos integrados.',
+    description: 'E-commerce para marca nacional de moda en crecimiento, con experiencia de compra moderna. Implementé verificación con tokens OTP para cambios de perfil, integración de pasarela de pagos vía API y gestión de inventario por SKU en Supabase (producto, color y stock). Se añadieron automatizaciones con n8n para capturar intereses, datos y preguntas de clientes, además de mensajería y envío/recepción de correos para soporte y novedades.',
     tech: ['React', 'TypeScript', 'Supabase', 'Node.js', 'Vercel'],
     image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=800&fit=crop',
     liveUrl: 'https://www.thelokistore.com/',
@@ -16,7 +16,7 @@ const projects = [
   },
   {
     title: 'Gym Ecommerce Hub',
-    description: 'E-commerce para tienda fitness en México con catálogo de suplementos y creatinas, más panel admin con analítica de tráfico, registros, inventario y top ventas. Gestión de contenidos y promociones, y automatizaciones para agenda, mensajes, captura de leads y reportes.',
+    description: 'E-commerce para tienda fitness en México que impulsa ventas de suplementos, creatinas y productos deportivos con un catálogo optimizado para convertir. Panel admin con métricas de tráfico y registros, control de inventario, top ventas y reportes semanales de comportamiento. Gestión de contenidos y promociones, más automatizaciones para agendamiento, atención de mensajes y captura de leads, facilitando el seguimiento comercial y el cierre de ventas.',
     tech: ['React', 'TypeScript', 'Supabase', 'n8n'],
     image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&h=800&fit=crop',
     liveUrl: 'https://gym-ecommerce-hub.vercel.app/',
@@ -73,6 +73,7 @@ const Projects = () => {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [expandedDescriptions, setExpandedDescriptions] = useState<Record<string, boolean>>({});
   const descriptionLimit = 170;
+  const expandableProjects = new Set(['Gym Ecommerce Hub', 'Loki Ecommerce']);
 
   const toggleDescription = (title: string) => {
     setExpandedDescriptions((prev) => ({
@@ -146,18 +147,18 @@ const Projects = () => {
                 </div>
                 
                 <p className="text-muted-foreground mb-2 leading-relaxed text-lg">
-                  {expandedDescriptions[project.title]
-                    ? project.description
-                    : getDescriptionPreview(project.description)}
+                  {expandableProjects.has(project.title) && !expandedDescriptions[project.title]
+                    ? getDescriptionPreview(project.description)
+                    : project.description}
                 </p>
-                {project.description.length > descriptionLimit && (
+                {expandableProjects.has(project.title) && project.description.length > descriptionLimit && (
                   <button
                     type="button"
                     onClick={() => toggleDescription(project.title)}
                     className="text-sm font-medium text-primary hover:text-primary/80 transition-colors mb-6"
                     aria-expanded={expandedDescriptions[project.title] ?? false}
                   >
-                    {expandedDescriptions[project.title] ? 'Leer menos' : 'Leer mas'}
+                    {expandedDescriptions[project.title] ? 'Leer menos' : 'Leer más'}
                   </button>
                 )}
 
@@ -227,18 +228,18 @@ const Projects = () => {
                   </span>
                 </div>
                 <p className="text-muted-foreground text-sm mb-2 leading-relaxed">
-                  {expandedDescriptions[project.title]
-                    ? project.description
-                    : getDescriptionPreview(project.description)}
+                  {expandableProjects.has(project.title) && !expandedDescriptions[project.title]
+                    ? getDescriptionPreview(project.description)
+                    : project.description}
                 </p>
-                {project.description.length > descriptionLimit && (
+                {expandableProjects.has(project.title) && project.description.length > descriptionLimit && (
                   <button
                     type="button"
                     onClick={() => toggleDescription(project.title)}
                     className="text-xs font-medium text-primary hover:text-primary/80 transition-colors mb-4"
                     aria-expanded={expandedDescriptions[project.title] ?? false}
                   >
-                    {expandedDescriptions[project.title] ? 'Leer menos' : 'Leer mas'}
+                    {expandedDescriptions[project.title] ? 'Leer menos' : 'Leer más'}
                   </button>
                 )}
                 <div className="flex flex-wrap gap-2 mb-4">

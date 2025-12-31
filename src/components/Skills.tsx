@@ -51,6 +51,7 @@ const skillCategories = [
 const Skills = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const sliderCategories = [...skillCategories, ...skillCategories];
 
   return (
     <section id="skills" className="py-24 md:py-32 bg-muted/30" ref={ref}>
@@ -72,14 +73,15 @@ const Skills = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          {skillCategories.map((category, categoryIndex) => (
+        <div className="skills-slider">
+          <div className="skills-track">
+            {sliderCategories.map((category, categoryIndex) => (
             <motion.div
-              key={category.title}
+              key={`${category.title}-${categoryIndex}`}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
-              className="glass-card p-6 md:p-8"
+              className="glass-card p-6 md:p-8 skills-card"
             >
               <h3 className="font-display font-semibold text-lg mb-6 flex items-center gap-3">
                 <span className="w-2 h-2 rounded-full bg-primary" />
@@ -104,7 +106,8 @@ const Skills = () => {
                 ))}
               </div>
             </motion.div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

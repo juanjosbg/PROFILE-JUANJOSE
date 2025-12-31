@@ -47,7 +47,7 @@ const Contact = () => {
                 quieras discutir ideas, estoy disponible.
               </p>
               <a
-                href="mailto:juanjosbg@email.com"
+                href="mailto:juanjoseborrero95@gmail.com"
                 className="btn-primary text-lg"
               >
                 <Mail size={20} />
@@ -70,7 +70,7 @@ const Contact = () => {
                 </div>
                 <div className="text-left">
                   <p className="text-sm text-muted-foreground">Email</p>
-                  <p className="font-medium">juanjosbg@email.com</p>
+                  <p className="font-medium">juanjoseborrero95@gmail.com</p>
                 </div>
               </div>
               <div className="flex items-center gap-4 p-4 rounded-xl bg-muted/50">
@@ -95,7 +95,7 @@ const Contact = () => {
                 <Github size={20} />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/juanjoseborrero/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300"
@@ -103,7 +103,7 @@ const Contact = () => {
                 <Linkedin size={20} />
               </a>
               <a
-                href="mailto:juanjosbg@email.com"
+                href="mailto:juanjoseborrero95@gmail.com"
                 className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300"
               >
                 <Send size={20} />

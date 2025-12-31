@@ -46,21 +46,26 @@ const About = () => {
             <h2 className="section-title mb-6">
               Un poco de mí
             </h2>
-            <div className="space-y-4 text-muted-foreground leading-relaxed">
-              <p>
-                Soy un desarrollador frontend con experiencia sólida en la creación de 
-                aplicaciones web modernas y escalables. Mi enfoque está en construir 
-                soluciones que no solo se vean bien, sino que también <strong className="text-foreground">funcionen 
-                excepcional</strong>.
+            <div className="space-y-4 text-muted-foreground leading-relaxed text-justify">
+              <p>Soy Frontend Developer con experiencia en el diseño y desarrollo de aplicaciones web modernas,
+                escalables y orientadas a rendimiento.
+                Me especializo en construir interfaces que combinan
+                <strong className="text-foreground"> criterio visual, performance, accesibilidad y objetivos de negocio</strong>, no solo “UI bonita”.
               </p>
               <p>
-                Trabajo principalmente con <strong className="text-foreground">React, Next.js, TypeScript y 
-                TailwindCSS</strong>. También tengo experiencia en WordPress, desarrollo de themes 
-                personalizados, optimización SEO y automatización con n8n.
+                Trabajo principalmente con <strong className="text-foreground">React, Next.js, TypeScript,
+                TailwindCSS y Supebase</strong>,desarrollando soluciones mantenibles y optimizadas. 
+                Cuento con un sólido dominio de <strong className="text-foreground"> WordPress</strong> (themes personalizados, SEO técnico y optimización para conversión), 
+                así como experiencia en e-commerce y migraciones tecnológicas.
               </p>
               <p>
-                Ubicado en <strong className="text-foreground">Cali, Colombia</strong>. Disponible para 
-                proyectos remotos con equipos internacionales.
+                Tengo experiencia integrando bases de datos como 
+                <strong className="text-foreground">Firebase, Supabase y MySQL</strong>, y actualmente profundizo en 
+                <strong className="text-foreground">automatización con n8n</strong>, creando flujos inteligentes que mejoran procesos internos, captación de leads y experiencia del usuario.
+              </p>
+              <p>
+                Me caracterizo por el pensamiento crítico, la atención al detalle y el trabajo colaborativo, 
+                aportando soluciones técnicas alineadas con producto, marketing y negocio.
               </p>
             </div>
 

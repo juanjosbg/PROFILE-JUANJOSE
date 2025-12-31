@@ -15,8 +15,8 @@ const Footer = () => {
           {/* Logo & Copyright */}
           <div className="flex flex-col items-center md:items-start gap-2">
             <a href="#" className="font-display text-xl font-bold">
-              <span className="gradient-text">JJ</span>
-              <span className="text-foreground">.dev</span>
+              <span className="gradient-text">Juan José</span>
+              <span className="text-foreground"> Borrero</span>
             </a>
             <p className="text-sm text-muted-foreground">
               © {currentYear} Juan José Borrero. Cali, Colombia.
@@ -34,7 +34,7 @@ const Footer = () => {
               <Github size={18} />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/juanjoseborrero/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300"
@@ -42,7 +42,7 @@ const Footer = () => {
               <Linkedin size={18} />
             </a>
             <a
-              href="mailto:juanjosbg@email.com"
+              href="mailto:juanjoseborrero95@gmail.com"
               className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300"
             >
               <Mail size={18} />

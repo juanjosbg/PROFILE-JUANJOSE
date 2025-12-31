@@ -48,8 +48,8 @@ const Navbar = () => {
             className="font-display text-xl md:text-2xl font-bold"
             whileHover={{ scale: 1.02 }}
           >
-            <span className="gradient-text">JJ</span>
-            <span className="text-foreground">.dev</span>
+            <span className="gradient-text">Juan </span>
+            <span className="text-foreground"> Borrero</span>
           </motion.a>
 
           {/* Desktop Navigation */}

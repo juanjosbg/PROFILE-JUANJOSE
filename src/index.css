@@ -40,10 +40,10 @@
     --gradient-primary: linear-gradient(135deg, hsl(212 90% 52%) 0%, hsl(215 85% 42%) 100%);
     --gradient-hero: linear-gradient(180deg, hsl(0 0% 98%) 0%, hsl(0 0% 95%) 100%);
     --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(0 0% 98%) 100%);
-    --shadow-subtle: 0 1px 3px hsl(0 0% 0% / 0.04), 0 4px 12px hsl(0 0% 0% / 0.04);
-    --shadow-card: 0 4px 24px hsl(0 0% 0% / 0.06);
-    --shadow-card-hover: 0 12px 40px hsl(0 0% 0% / 0.1);
-    --shadow-elevated: 0 24px 48px hsl(0 0% 0% / 0.12);
+    --shadow-subtle: 0 1px 3px hsl(0 0% 100% / 0.03), 0 4px 12px hsl(0 0% 100% / 0.04);
+    --shadow-card: 0 4px 24px hsl(0 0% 100% / 0.06);
+    --shadow-card-hover: 0 12px 40px hsl(0 0% 100% / 0.14);
+    --shadow-elevated: 0 24px 48px hsl(0 0% 100% / 0.12);
   }
 
   .dark {
@@ -79,10 +79,10 @@
     --gradient-primary: linear-gradient(135deg, hsl(212 90% 55%) 0%, hsl(215 85% 45%) 100%);
     --gradient-hero: linear-gradient(180deg, hsl(0 0% 4%) 0%, hsl(0 0% 6%) 100%);
     --gradient-subtle: linear-gradient(180deg, hsl(0 0% 7%) 0%, hsl(0 0% 5%) 100%);
-    --shadow-subtle: 0 1px 3px hsl(0 0% 0% / 0.2), 0 4px 12px hsl(0 0% 0% / 0.2);
-    --shadow-card: 0 4px 24px hsl(0 0% 0% / 0.4);
-    --shadow-card-hover: 0 12px 40px hsl(0 0% 0% / 0.5);
-    --shadow-elevated: 0 24px 48px hsl(0 0% 0% / 0.6);
+    --shadow-subtle: 0 1px 3px hsl(0 0% 100% / 0.05), 0 4px 12px hsl(0 0% 100% / 0.06);
+    --shadow-card: 0 4px 24px hsl(0 0% 100% / 0.1);
+    --shadow-card-hover: 0 12px 40px hsl(0 0% 100% / 0.2);
+    --shadow-elevated: 0 24px 48px hsl(0 0% 100% / 0.18);
   }
 }
 
@@ -178,6 +178,33 @@
     @apply -translate-y-1;
   }
 
+  .skills-slider {
+    @apply relative overflow-hidden py-2;
+    mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
+  }
+
+  .skills-track {
+    display: flex;
+    gap: 1.5rem;
+    width: max-content;
+    animation: scroll-skills 32s linear infinite;
+    will-change: transform;
+  }
+
+  .skills-track:hover {
+    animation-play-state: paused;
+  }
+
+  .skills-card {
+    min-width: 280px;
+    max-width: 360px;
+    @apply border border-border/60 bg-card/80 backdrop-blur-sm transition-transform duration-300;
+  }
+
+  .skills-card:hover {
+    @apply -translate-y-1 border-primary/30;
+  }
+
   /* Phone Mockup */
   .phone-mockup {
     @apply relative bg-card rounded-[2.5rem] p-2 shadow-2xl;
@@ -199,7 +226,8 @@
   }
 
   .timeline-line {
-    @apply absolute left-0 top-0 bottom-0 w-px bg-border;
+    @apply absolute top-0 bottom-0 w-px bg-border;
+    left: 26px;
   }
 
   /* Badge variants */
@@ -219,6 +247,11 @@
   @keyframes float {
     0%, 100% { transform: translateY(0px) rotate(0deg); }
     50% { transform: translateY(-20px) rotate(2deg); }
+  }
+
+  @keyframes scroll-skills {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
   }
 
   .animate-float {

@@ -60,7 +60,7 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-foreground mb-6"
           >
-            Creando experiencias digitales
+            Enfocado en rendimiento y escalabilidad
           </motion.h2>
 
           {/* Description */}
@@ -70,9 +70,9 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-muted-foreground max-w-2xl mb-10 text-lg leading-relaxed text-balance"
           >
-            Soy <strong className="text-foreground">Juan José Borrero</strong>, desarrollador frontend 
-            especializado en React, Web Performance y SEO. Construyo experiencias web modernas, 
-            rápidas y orientadas a conversión.
+            Soy Juan José Borrero, <strong className="text-foreground">Web Developer</strong>,
+            con fuerte enfoque en frontend, especializado en <strong className="text-foreground">React, Web Performance y SEO</strong>. 
+            Diseño y construyo aplicaciones web modernas, integrando bases de datos y automatizaciones para crear soluciones rápidas, escalables y orientadas a conversión.
           </motion.p>
 
           {/* Social Links */}
@@ -91,7 +91,7 @@ const Hero = () => {
               <Github size={20} />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/juanjoseborrero/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 rounded-full bg-card border border-border flex items-center justify-center hover:bg-muted hover:border-primary/30 transition-all duration-300"
@@ -99,7 +99,8 @@ const Hero = () => {
               <Linkedin size={20} />
             </a>
             <a
-              href="mailto:juanjosbg@email.com"
+              href="mailto:juanjoseborrero95@gmail.com"
+
               className="w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center hover:scale-105 transition-all duration-300"
             >
               <Mail size={20} />
@@ -126,7 +127,7 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 1 }}
-            className="absolute bottom-8 left-1/2 -translate-x-1/2"
+            className="mt-10 flex justify-center sm:absolute sm:bottom-8 sm:left-1/2 sm:-translate-x-1/2 sm:mt-0"
           >
             <motion.a
               href="#about"
