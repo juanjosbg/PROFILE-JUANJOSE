@@ -1,19 +1,43 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Moon, Sun } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
 
-const navLinks = [
-  { name: 'Sobre mí', href: '#about' },
-  { name: 'Habilidades', href: '#skills' },
-  { name: 'Proyectos', href: '#projects' },
-  { name: 'Experiencia', href: '#experience' },
-  { name: 'Contacto', href: '#contact' },
-];
+type Language = 'es' | 'en';
 
-const Navbar = () => {
+interface NavbarProps {
+  language: Language;
+  onLanguageChange: (language: Language) => void;
+}
+
+const Navbar = ({ language, onLanguageChange }: NavbarProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(true);
+  const location = useLocation();
+
+  const isHome = location.pathname === '/';
+  const withHomePath = (hash: string) => (isHome ? hash : `/${hash}`);
+  const contactHref = withHomePath('#contact');
+
+  const navLinks =
+    language === 'es'
+      ? [
+          { name: 'Sobre mí', href: withHomePath('#about') },
+          { name: 'Habilidades', href: withHomePath('#skills') },
+          { name: 'Proyectos', href: withHomePath('#projects') },
+          { name: 'Experiencia', href: withHomePath('#experience') },
+          { name: 'Certificaciones', href: '/certifications' },
+          { name: 'Contacto', href: contactHref },
+        ]
+      : [
+          { name: 'About', href: withHomePath('#about') },
+          { name: 'Skills', href: withHomePath('#skills') },
+          { name: 'Projects', href: withHomePath('#projects') },
+          { name: 'Experience', href: withHomePath('#experience') },
+          { name: 'Certifications', href: '/certifications' },
+          { name: 'Contact', href: contactHref },
+        ];
 
   useEffect(() => {
     document.documentElement.classList.add('dark');
@@ -35,24 +59,22 @@ const Navbar = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-background/80 backdrop-blur-xl border-b border-border' 
+        isScrolled
+          ? 'bg-background/80 backdrop-blur-xl border-b border-border'
           : 'bg-transparent'
       }`}
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
           <motion.a
-            href="#"
+            href="/"
             className="font-display text-xl md:text-2xl font-bold"
             whileHover={{ scale: 1.02 }}
           >
-            <span className="gradient-text">Juan </span>
+            <span className="gradient-text">Juan José</span>
             <span className="text-foreground"> Borrero</span>
           </motion.a>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
               <a
@@ -65,23 +87,28 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Actions */}
           <div className="flex items-center gap-2">
             <button
               onClick={toggleTheme}
               className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center hover:bg-muted/80 transition-colors"
+              aria-label={language === 'es' ? 'Cambiar tema' : 'Toggle theme'}
             >
               {isDark ? <Sun size={18} /> : <Moon size={18} />}
             </button>
-            <a
-              href="#contact"
-              className="hidden md:flex btn-primary text-sm py-2.5"
+            <button
+              onClick={() => onLanguageChange(language === 'es' ? 'en' : 'es')}
+              className="h-10 px-3 rounded-xl bg-muted flex items-center justify-center hover:bg-muted/80 transition-colors text-sm font-semibold"
+              aria-label={language === 'es' ? 'Cambiar a inglés' : 'Switch to Spanish'}
             >
-              Contactar
+              {language === 'es' ? 'ES' : 'EN'}
+            </button>
+            <a href={contactHref} className="hidden md:flex btn-primary text-sm py-2.5">
+              {language === 'es' ? 'Contactar' : 'Contact'}
             </a>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="md:hidden w-10 h-10 rounded-xl bg-muted flex items-center justify-center"
+              aria-label={language === 'es' ? 'Abrir menú' : 'Open menu'}
             >
               {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -89,7 +116,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -110,11 +136,11 @@ const Navbar = () => {
                 </a>
               ))}
               <a
-                href="#contact"
+                href={contactHref}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="btn-primary text-center mt-2"
               >
-                Contactar
+                {language === 'es' ? 'Contactar' : 'Contact'}
               </a>
             </div>
           </motion.div>
