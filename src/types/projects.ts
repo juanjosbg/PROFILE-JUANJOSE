@@ -6,7 +6,7 @@ export type Project = {
   image: string;
   liveUrl: string | null;
   githubUrl: string;
-  repositoryStatus?: "public" | "pending";
+  repositoryStatus?: "public" | "private";
   status: "active" | "progress" | "building";
   featured: boolean;
 };

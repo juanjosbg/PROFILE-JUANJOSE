@@ -55,7 +55,7 @@ const Projects = ({ language }: ProjectsProps) => {
           readLess: "Leer menos",
           demo: "Ver demo",
           repo: "Repositorio",
-          unavailable: "Enlace de código pendiente de actualización",
+          unavailable: "Repositorio privado",
           code: "Código",
           status: {
             active: "Activo",
@@ -72,7 +72,7 @@ const Projects = ({ language }: ProjectsProps) => {
           readLess: "Read less",
           demo: "View demo",
           repo: "Repository",
-          unavailable: "Code link pending update",
+          unavailable: "Private repository",
           code: "Code",
           status: {
             active: "Active",
@@ -194,7 +194,7 @@ const Projects = ({ language }: ProjectsProps) => {
                       {text.demo}
                     </a>
                   )}
-                  {project.repositoryStatus === "pending" ? (
+                  {project.repositoryStatus === "private" ? (
                     <span className="text-sm text-muted-foreground">
                       {text.unavailable}
                     </span>
@@ -271,7 +271,7 @@ const Projects = ({ language }: ProjectsProps) => {
                       Demo
                     </a>
                   )}
-                  {project.repositoryStatus === "pending" ? (
+                  {project.repositoryStatus === "private" ? (
                     <span className="text-sm text-muted-foreground">
                       {text.unavailable}
                     </span>

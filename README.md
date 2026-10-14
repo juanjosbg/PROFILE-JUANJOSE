@@ -66,7 +66,7 @@ La página pública se actualiza al guardar. Otras sesiones se refrescan al volv
 
 El checkout recibido contiene **5 proyectos**, los **10 PDFs** y ningún PDF de la hackathon ni CV. Se preservaron todos los proyectos disponibles; no se inventaron los siete que faltan respecto al contexto inicial. El proyecto Chatbot tiene el stack corregido conforme a [su README público](https://github.com/juanjosbg/Chatbot-app); falta una demo pública confirmada.
 
-Las URLs de los repositorios de Loki-Ecommerce, Gp3App y CIMELCO cambiaron. Quedan pendientes las direcciones nuevas; mientras tanto no se publican enlaces rotos. Actualiza sus URLs en los datos y cambia `repositoryStatus` a `public` al verificarlas.
+Los repositorios de Loki-Ecommerce, Gp3App y CIMELCO son privados y sus tarjetas lo indican sin publicar enlaces de GitHub. Sus demos públicas son https://thelokistore.com/, https://gp3-app.vercel.app/ y https://www.cimelco.net/. Si publicas un repositorio, actualiza su URL y cambia `repositoryStatus` a `public`.
 
 Añade tu CV aprobado como `public/cv-juan-jose-borrero.pdf` y reconstruye. El botón del Hero se habilita automáticamente al detectar el archivo; mientras falte muestra **CV pendiente**.
 
