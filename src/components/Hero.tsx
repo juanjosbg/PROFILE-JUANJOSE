@@ -11,7 +11,7 @@ const Hero = ({ language }: HeroProps) => {
   const text =
     language === 'es'
       ? {
-          title: 'React - N8N - IA',
+          title: 'React - n8n - IA',
           subtitle: 'Creo apps con React, automatizo con n8n y sumo agentes de IA.',
           description:
             'Soy Juan José Borrero. Construyo aplicaciones con React y TypeScript e integro inteligencia artificial para conectar herramientas, automatizar procesos y crear experiencias útiles.',

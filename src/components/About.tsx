@@ -70,7 +70,7 @@ const About = ({ language }: AboutProps) => {
           spanish: 'Español',
           spanishLevel: 'Nativo',
           english: 'Inglés',
-          englishLevel: 'Intermedio B1',
+          englishLevel: 'Intermedio B2',
         }
       : {
           label: 'About',
