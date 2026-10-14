@@ -57,10 +57,8 @@ await waitFor(
   `document.documentElement.lang==='es' && !!document.querySelector('h1')`,
 );
 assert.equal(
-  await evaluate(
-    `document.querySelector('a[download]').getAttribute('aria-disabled')`,
-  ),
-  "true",
+  await evaluate(`document.querySelector('a[download]').getAttribute('href')`),
+  "/images/CV/CV-Juanjose-ES.pdf",
 );
 await evaluate(
   `document.querySelector('button[aria-label="ES: Cambiar a inglés"]').click()`,
@@ -113,7 +111,7 @@ assert.equal(
   "noindex, nofollow",
 );
 await send("Emulation.setDeviceMetricsOverride", {
-  width: 390,
+  width: 375,
   height: 844,
   deviceScaleFactor: 1,
   mobile: true,
@@ -146,8 +144,166 @@ await writeFile(
   ".qa-certifications.png",
   Buffer.from(screenshot.data, "base64"),
 );
+// Check the requested responsive/theme/language combinations on real pages.
+for (const width of [375, 1440]) {
+  for (const theme of ["light", "dark"]) {
+    for (const language of ["es", "en"]) {
+      await send("Emulation.setDeviceMetricsOverride", {
+        width,
+        height: 1000,
+        deviceScaleFactor: 1,
+        mobile: width === 375,
+      });
+      await evaluate(
+        `localStorage.setItem('portfolio-theme', ${JSON.stringify(theme)}); localStorage.setItem('portfolio-language', ${JSON.stringify(language)});`,
+      );
+      await send("Page.navigate", { url: base });
+      await waitFor(
+        `document.querySelector('#projects h3')?.textContent==='X-Mate' && document.documentElement.lang===${JSON.stringify(language)}`,
+      );
+      assert.equal(
+        await evaluate(`document.documentElement.classList.contains('dark')`),
+        theme === "dark",
+      );
+      assert.equal(
+        await evaluate(
+          `document.querySelector('a[download]').getAttribute('href')`,
+        ),
+        `/images/CV/CV-Juanjose-${language.toUpperCase()}.pdf`,
+      );
+      assert.ok(
+        await evaluate(
+          `!document.querySelector('[data-project="X-Mate"] img')`,
+        ),
+        "X-Mate uses the generic phone fallback",
+      );
+      assert.equal(
+        await evaluate(
+          `document.querySelector('[data-project="X-Mate"] a[href="/certifications"]').textContent.trim()`,
+        ),
+        "EAG Global Buildathon 2026",
+      );
+      assert.equal(
+        await evaluate(
+          `document.querySelector('[data-project="X-Mate"] a[target="_blank"]').getAttribute('href')`,
+        ),
+        "https://github.com/EmanuelDesarrollo/ethereum-app-transaction",
+      );
+      assert.equal(
+        await evaluate(
+          `document.querySelectorAll('[data-project="X-Mate"] a[target="_blank"]').length`,
+        ),
+        1,
+        "Only the repository is linked; no demo",
+      );
+      await evaluate(`document.querySelector('#projects').scrollIntoView()`);
+      await new Promise((resolve) => setTimeout(resolve, 900));
+      await evaluate(
+        `document.querySelector('[data-project="X-Mate"] button[aria-expanded]').click()`,
+      );
+      assert.ok(
+        await evaluate(
+          `document.querySelector('[data-project="X-Mate"]').textContent.includes(${JSON.stringify(language === "es" ? "Construida y entregada en 48 horas" : "Built and shipped in 48 hours")})`,
+        ),
+      );
+      await evaluate(
+        `document.querySelector('[data-project="X-Mate"] button[aria-expanded]').click()`,
+      );
+      if (width === 1440) {
+        for (const [title, direction] of [
+          ["Loki Ecommerce", "row"],
+          ["Gym Ecommerce Hub", "row-reverse"],
+          ["GP3Digital Web", "row"],
+        ]) {
+          assert.equal(
+            await evaluate(
+              `getComputedStyle(document.querySelector('[data-project=${JSON.stringify(title)}]')).flexDirection`,
+            ),
+            direction,
+            "Existing project layout is preserved",
+          );
+        }
+      }
+      assert.ok(
+        await evaluate(
+          `document.documentElement.scrollWidth<=window.innerWidth`,
+        ),
+        "Home fits the viewport",
+      );
+      let shot = await send("Page.captureScreenshot", {
+        format: "png",
+        captureBeyondViewport: false,
+      });
+      await writeFile(
+        `.qa-xmate-${width}-${theme}-${language}.png`,
+        Buffer.from(shot.data, "base64"),
+      );
+      await send("Page.navigate", { url: base + "/certifications" });
+      await waitFor(
+        `document.querySelectorAll('article').length===11 && !!document.querySelector('[data-eag-certificate]')`,
+      );
+      assert.ok(
+        await evaluate(
+          `document.querySelector('[data-eag-certificate]').textContent.includes('Ethereum Mainnet · Token #29')`,
+        ),
+      );
+      const layout = await evaluate(
+        `getComputedStyle(document.querySelector('[data-eag-certificate]')).display`,
+      );
+      assert.equal(
+        layout,
+        width === 375 ? "block" : "grid",
+        "EAG stacks on mobile and uses columns on desktop",
+      );
+      assert.ok(
+        await evaluate(
+          `document.documentElement.scrollWidth<=window.innerWidth`,
+        ),
+        "Certificates fit the viewport",
+      );
+      await new Promise((resolve) => setTimeout(resolve, 650));
+      shot = await send("Page.captureScreenshot", {
+        format: "png",
+        captureBeyondViewport: false,
+      });
+      await writeFile(
+        `.qa-eag-${width}-${theme}-${language}.png`,
+        Buffer.from(shot.data, "base64"),
+      );
+      await evaluate(
+        `document.querySelector('[aria-roledescription="carousel"]').scrollIntoView()`,
+      );
+      await new Promise((resolve) => setTimeout(resolve, 450));
+      const previousTransform = await evaluate(
+        `document.querySelector('[aria-roledescription="slide"]').parentElement.style.transform`,
+      );
+      await evaluate(
+        `document.querySelector('button[aria-label=${JSON.stringify(language === "es" ? "Siguientes certificados" : "Next certificates")} ]').click()`,
+      );
+      await waitFor(
+        `document.querySelector('[aria-roledescription="slide"]').parentElement.style.transform!==${JSON.stringify(previousTransform)}`,
+      );
+      shot = await send("Page.captureScreenshot", {
+        format: "png",
+        captureBeyondViewport: false,
+      });
+      await writeFile(
+        `.qa-carousel-${width}-${theme}-${language}.png`,
+        Buffer.from(shot.data, "base64"),
+      );
+    }
+  }
+}
+for (const language of ["ES", "EN"]) {
+  const response = await fetch(`${base}/images/CV/CV-Juanjose-${language}.pdf`);
+  assert.equal(response.status, 200);
+  const signature = Buffer.from(await response.arrayBuffer())
+    .subarray(0, 5)
+    .toString();
+  assert.equal(signature, "%PDF-", "CV URLs return PDFs instead of the SPA");
+}
 assert.deepEqual(errors, [], "No runtime exceptions");
 console.log(
-  "PASS: home, bilingual persistence, 11 certificates, filters, search, PDF modal, Escape, admin configuration state, mobile menu and layout.",
+  "PASS: home, certificates, filters, search, modal, X-Mate, award, read more, existing project layouts, carousel controls and both CVs at 375/1440 px in light/dark and es/en.",
 );
 ws.close();

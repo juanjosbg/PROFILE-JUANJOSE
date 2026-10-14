@@ -42,7 +42,7 @@ Configura temporalmente `SUPABASE_SERVICE_ROLE_KEY` en tu entorno local de migra
 npm run seed:certificates
 ```
 
-El script sube los 10 PDFs de `public/images/Certificados/` y crea el registro destacado de la hackathon. Si tienes su PDF, configura `HACKATHON_FILE` con su ruta antes de ejecutar el seed. Si falta, se migran los datos de la hackathon sin un enlace roto; podrás añadir el documento en el panel.
+El script sube los 10 PDFs de `public/images/Certificados/` y crea el registro destacado de la hackathon. Si añades `public/images/Certificados/eag-buildathon-2026.png`, también sube esa imagen; puedes indicar otro PDF o imagen con `HACKATHON_FILE`. Si falta, se migran los datos de la hackathon sin un enlace roto; podrás añadir el documento en el panel.
 
 Los IDs son estables. Los registros ya migrados se omiten al repetir el script, conservando tus ediciones. Las fechas de los cursos antiguos son desconocidas y quedan vacías; complétalas al revisar los certificados. El script de migración no genera miniaturas: al reemplazar o añadir un archivo desde el panel, se generará su vista previa.
 
@@ -64,11 +64,13 @@ La página pública se actualiza al guardar. Otras sesiones se refrescan al volv
 - Respaldo de certificados: `src/data/certificates.ts`.
 - Tipos: `src/types/`.
 
-El checkout recibido contiene **5 proyectos**, los **10 PDFs** y ningún PDF de la hackathon ni CV. Se preservaron todos los proyectos disponibles; no se inventaron los siete que faltan respecto al contexto inicial. El proyecto Chatbot tiene el stack corregido conforme a [su README público](https://github.com/juanjosbg/Chatbot-app); falta una demo pública confirmada.
+El portafolio contiene **6 proyectos**, con **X-Mate como primer destacado**, y los **10 PDFs** de cursos. X-Mate incluye el sello de EAG Global Buildathon 2026 y un placeholder de teléfono; añade la captura en `public/images/xmate.png` y activa la ruta comentada en sus datos. El proyecto Chatbot tiene el stack corregido conforme a [su README público](https://github.com/juanjosbg/Chatbot-app); falta una demo pública confirmada.
 
 Los repositorios de Loki-Ecommerce, Gp3App y CIMELCO son privados y sus tarjetas lo indican sin publicar enlaces de GitHub. Sus demos públicas son https://thelokistore.com/, https://gp3-app.vercel.app/ y https://www.cimelco.net/. Si publicas un repositorio, actualiza su URL y cambia `repositoryStatus` a `public`.
 
-Añade tu CV aprobado como `public/cv-juan-jose-borrero.pdf` y reconstruye. El botón del Hero se habilita automáticamente al detectar el archivo; mientras falte muestra **CV pendiente**.
+El botón del Hero descarga el CV correspondiente al idioma: `public/images/CV/CV-Juanjose-ES.pdf` o `public/images/CV/CV-Juanjose-EN.pdf`.
+
+La sección de certificados usa `src/components/ui/carousel-08.tsx`, adaptado a los datos reales, con búsqueda, filtros y visor. La tarjeta destacada de EAG muestra los datos del NFT y el enlace a X-Mate. Añade su imagen como `public/images/Certificados/eag-buildathon-2026.png` y reconstruye: la vista previa y el botón se habilitan al detectar el archivo. Si ya tienes un archivo en Supabase, se utiliza esa URL.
 
 ## SEO y despliegue
 

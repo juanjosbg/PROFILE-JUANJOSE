@@ -4,8 +4,8 @@ export const localCertificates: Certificate[] = [
   {
     id: "00000000-0000-4000-8000-000000000011",
     created_at: "2026-10-14T00:00:00Z",
-    title_es: "Builder Certificate · X-Mate",
-    title_en: "Builder Certificate · X-Mate",
+    title_es: "EAG Global Buildathon 2026",
+    title_en: "EAG Global Buildathon 2026",
     issuer: "ETH CALI · Universidad Icesi, Cali",
     category: "hackathon",
     issued_at: "2026-09-20",
@@ -13,11 +13,11 @@ export const localCertificates: Certificate[] = [
     verify_url: null,
     file_url: null,
     thumbnail_url: null,
-    skills: ["Ethereum", "React", "IA"],
+    skills: ["Ethereum", "React Native", "IA"],
     description_es:
-      "EAG Global Buildathon 2026 · Ethereum Builders Tour, capítulo Colombia. 19 y 20 de septiembre de 2026. Ethereum Mainnet · Token #29.",
+      "Construí y entregué X-Mate, una app de cobros con stablecoins y un agente de IA, durante la EAG Global Buildathon 2026. El certificado está emitido como NFT en Ethereum Mainnet.",
     description_en:
-      "EAG Global Buildathon 2026 · Ethereum Builders Tour, Colombia chapter. September 19–20, 2026. Ethereum Mainnet · Token #29.",
+      "I built and shipped X-Mate, a stablecoin payments app with an AI agent, at the EAG Global Buildathon 2026. The certificate is issued as an NFT on Ethereum Mainnet.",
     featured: true,
     sort_order: 0,
   },

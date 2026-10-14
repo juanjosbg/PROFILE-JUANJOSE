@@ -6,6 +6,8 @@ Se ejecutaron `npm run build`, `npm run lint` y `npm run typecheck` en cada fase
 
 Prueba pública: home, persistencia del idioma, 11 certificados del respaldo, filtros, búsqueda, modal PDF, cierre con Escape, panel sin configuración, menú y ancho móvil.
 
+La integración de X-Mate se comprobó a **375 y 1440 px**, en **claro y oscuro**, y en **español e inglés**: primer destacado, placeholder del teléfono, sello de EAG, descripción desplegable, orientación conservada de los proyectos anteriores, tarjeta horizontal de la hackathon, controles del carrusel y descarga de los dos CV. La imagen EAG aún está pendiente; se revisó su estado sin archivo.
+
 Prueba del panel con API Supabase simulada: envío de magic link sin crear usuarios, sesión del propietario, listado, miniatura de un PDF local real, carga de documento y miniatura, creación, edición, destacado, borrado y limpieza de Storage. También comprueba que otra cuenta no pueda abrir el editor, el respaldo público ante un error y la colección vacía sin sustituirla por datos de ejemplo.
 
 Estas pruebas no demuestran el comportamiento de Auth, Storage o RLS en un proyecto Supabase real. La migración aún debe aplicarse y probarse con sesiones de propietario, otro usuario y visitante anónimo.

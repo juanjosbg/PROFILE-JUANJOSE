@@ -1,6 +1,35 @@
 import type { Project } from "../types/projects";
 export const projects: Project[] = [
   {
+    title: "X-Mate",
+    description: {
+      es: 'App móvil de cobros con stablecoins y un agente de IA. El comercio cobra escribiendo o hablando en lenguaje natural ("cóbrale 15 dólares a Ana por la camisa azul"), el agente crea el cobro con function calling y genera un QR, y el cliente paga desde su propia wallet no custodial. Un listener detecta el pago en la blockchain y lo registra en un smart contract. Construida y entregada en 48 horas en la EAG Global Buildathon 2026.',
+      en: 'Mobile payments app powered by stablecoins and an AI agent. Merchants charge by typing or speaking in natural language ("charge Ana 15 dollars for the blue shirt"), the agent creates the charge through function calling and generates a QR code, and the customer pays from their own non-custodial wallet. An on-chain listener detects the payment and records it in a smart contract. Built and shipped in 48 hours at the EAG Global Buildathon 2026.',
+    },
+    tech: [
+      "React Native",
+      "TypeScript",
+      "Claude API",
+      "Function Calling",
+      "Node.js",
+      "Express",
+      "viem",
+      "Solidity",
+      "Foundry",
+    ],
+    image: "", // Set to "/images/xmate.png" when the app screenshot is available.
+    liveUrl: null,
+    githubUrl: "https://github.com/EmanuelDesarrollo/ethereum-app-transaction",
+    repositoryStatus: "public",
+    status: "active",
+    featured: true,
+    award: {
+      es: "EAG Global Buildathon 2026",
+      en: "EAG Global Buildathon 2026",
+    },
+    awardUrl: "/certifications",
+  },
+  {
     title: "Loki Ecommerce",
     description: {
       es: "E-commerce para marca de moda con autenticación OTP, pagos vía API e inventario por SKU en Supabase. Incluye una capa completa de crecimiento digital con SEO técnico, Google Tag Manager, Google Analytics 4 y Google Search Console, además de automatizaciones con n8n e integración de reels en tiempo real desde Instagram.",

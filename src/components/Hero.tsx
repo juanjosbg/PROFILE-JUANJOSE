@@ -137,7 +137,7 @@ const Hero = ({ language }: HeroProps) => {
             <a href="#contact" className="btn-secondary">
               {text.contact}
             </a>
-            <a href="/cv-juan-jose-borrero.pdf" download className="btn-secondary" aria-disabled={!import.meta.env.VITE_CV_AVAILABLE} onClick={e=>{if(!import.meta.env.VITE_CV_AVAILABLE)e.preventDefault();}} title={!import.meta.env.VITE_CV_AVAILABLE?text.cvPending:undefined}>{import.meta.env.VITE_CV_AVAILABLE?text.cv:text.cvPending}</a>
+            <a href={language === 'es' ? '/images/CV/CV-Juanjose-ES.pdf' : '/images/CV/CV-Juanjose-EN.pdf'} download className="btn-secondary">{text.cv}</a>
           </motion.div>
 
           <motion.div

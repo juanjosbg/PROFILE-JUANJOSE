@@ -4,6 +4,10 @@ import { useCertificates, sortCertificates } from "@/hooks/use-certificates";
 import { localCertificates } from "@/data/certificates";
 import CertificateCard from "./CertificateCard";
 import CertificateViewer from "./CertificateViewer";
+import CertificateCarouselCard from "./CertificateCarouselCard";
+import EagBuildathonCertificate from "./EagBuildathonCertificate";
+import AppleCardCarousel from "./ui/carousel-08";
+import { eagBuildathon, isEagCertificate } from "@/data/eag-buildathon";
 import type {
   Certificate,
   CertificateCategory,
@@ -64,8 +68,21 @@ export default function Certifications({
           more: "View all certifications",
           category: "Filter by category",
         };
-  const rows =
-    query.data ?? (query.isError ? sortCertificates(localCertificates) : []);
+  const rows = (
+    query.data ?? (query.isError ? sortCertificates(localCertificates) : [])
+  ).map((row) => {
+    if (!isEagCertificate(row)) return row;
+    const imageUrl = import.meta.env.VITE_EAG_CERTIFICATE_AVAILABLE
+      ? eagBuildathon.imageUrl
+      : null;
+    return {
+      ...row,
+      title_es: eagBuildathon.title,
+      title_en: eagBuildathon.title,
+      file_url: row.file_url ?? imageUrl,
+      thumbnail_url: row.thumbnail_url ?? imageUrl,
+    };
+  });
   const normalize = (value: string) =>
     value
       .normalize("NFD")
@@ -154,32 +171,45 @@ export default function Certifications({
         {featured.length > 0 && (
           <div className="mb-12">
             <h2 className="text-xl font-semibold mb-5">{text.featured}</h2>
-            <div className="grid lg:grid-cols-2 gap-6">
-              {featured.map((row) => (
-                <CertificateCard
-                  key={row.id}
-                  certificate={row}
-                  language={language}
-                  large
-                  onView={() => setSelected(row)}
-                />
-              ))}
+            <div className="space-y-6">
+              {featured.map((row) =>
+                isEagCertificate(row) ? (
+                  <EagBuildathonCertificate
+                    key={row.id}
+                    certificate={row}
+                    language={language}
+                    onView={() => setSelected(row)}
+                  />
+                ) : (
+                  <CertificateCard
+                    key={row.id}
+                    certificate={row}
+                    language={language}
+                    large
+                    onView={() => setSelected(row)}
+                  />
+                ),
+              )}
             </div>
           </div>
         )}
-        {!recent && grid.length > 0 && (
-          <h2 className="sr-only">{text.results}</h2>
+        {grid.length > 0 && (
+          <AppleCardCarousel
+            key={`${category}:${search}:${recent}`}
+            language={language}
+            title={text.results}
+            cards={grid.map((row) => ({
+              id: row.id,
+              content: (
+                <CertificateCarouselCard
+                  certificate={row}
+                  language={language}
+                  onView={() => setSelected(row)}
+                />
+              ),
+            }))}
+          />
         )}
-        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
-          {grid.map((row) => (
-            <CertificateCard
-              key={row.id}
-              certificate={row}
-              language={language}
-              onView={() => setSelected(row)}
-            />
-          ))}
-        </div>
         {!query.isPending && matches.length === 0 && (
           <p role="status" className="text-center py-10">
             {text.empty}

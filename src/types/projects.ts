@@ -9,4 +9,6 @@ export type Project = {
   repositoryStatus?: "public" | "private";
   status: "active" | "progress" | "building";
   featured: boolean;
+  award?: Record<Language, string>;
+  awardUrl?: string;
 };

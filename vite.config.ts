@@ -7,8 +7,10 @@ import { componentTagger } from "lovable-tagger";
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   define: {
-    "import.meta.env.VITE_CV_AVAILABLE": JSON.stringify(
-      existsSync(path.resolve("public/cv-juan-jose-borrero.pdf")),
+    "import.meta.env.VITE_EAG_CERTIFICATE_AVAILABLE": JSON.stringify(
+      existsSync(
+        path.resolve("public/images/Certificados/eag-buildathon-2026.png"),
+      ),
     ),
   },
   build: {

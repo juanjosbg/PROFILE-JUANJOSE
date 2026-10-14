@@ -1,7 +1,8 @@
 import { projects } from "@/data/projects";
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { ExternalLink, Github } from "lucide-react";
+import { Award, ExternalLink, Github } from "lucide-react";
+import { Link } from "react-router-dom";
 
 type Language = "es" | "en";
 
@@ -42,7 +43,11 @@ const Projects = ({ language }: ProjectsProps) => {
     Record<string, boolean>
   >({});
   const descriptionLimit = 170;
-  const expandableProjects = new Set(["Gym Ecommerce Hub", "Loki Ecommerce"]);
+  const expandableProjects = new Set([
+    "X-Mate",
+    "Gym Ecommerce Hub",
+    "Loki Ecommerce",
+  ]);
 
   const text =
     language === "es"
@@ -118,10 +123,11 @@ const Projects = ({ language }: ProjectsProps) => {
           {featuredProjects.map((project, index) => (
             <motion.div
               key={project.title}
+              data-project={project.title}
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              className={`flex flex-col ${index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} gap-8 lg:gap-16 items-center`}
+              className={`flex flex-col ${Math.max(0, index - Number(featuredProjects[0]?.title === "X-Mate")) % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} gap-8 lg:gap-16 items-center`}
             >
               <motion.div
                 className="flex-shrink-0"
@@ -152,6 +158,15 @@ const Projects = ({ language }: ProjectsProps) => {
                   </span>
                 </div>
 
+                {project.award && (
+                  <Link
+                    to={project.awardUrl ?? "/certifications"}
+                    className="inline-flex items-center gap-2 mb-5 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/30 text-primary text-xs font-medium"
+                  >
+                    <Award size={16} aria-hidden="true" />
+                    {project.award[language]}
+                  </Link>
+                )}
                 <p className="text-muted-foreground mb-2 leading-relaxed text-lg">
                   {expandableProjects.has(project.title) &&
                   !expandedDescriptions[project.title]
