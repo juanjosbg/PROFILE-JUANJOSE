@@ -1,3 +1,4 @@
+import { experiences } from '@/data/experience';
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { CalendarCheck, BookOpen, Plane } from 'lucide-react';
@@ -8,82 +9,7 @@ interface ExperienceProps {
   language: Language;
 }
 
-type ExperienceItem = {
-  title: Record<Language, string>;
-  company: string;
-  period: string;
-  description: Record<Language, string>;
-  highlights: string[];
-};
 
-const experiences: ExperienceItem[] = [
-  {
-    title: { es: 'Web Designer & Developer', en: 'Web Designer & Developer' },
-    company: 'Clinica Colombia ES, Cali',
-    period: 'Jul 2025 - Present',
-    description: {
-      es: 'Lidero iniciativas de desarrollo de software y desarrollo web para la clinica, con foco en arquitectura frontend, estructura de componentes reutilizables y escalabilidad en React/Next.js. Diseño soluciones mantenibles, integro WordPress y APIs, y optimizo el rendimiento tecnico para mejorar conversion y operacion digital.',
-      en: 'I lead software and web development initiatives for the clinic, focused on frontend architecture, reusable component structure, and scalability with React/Next.js. I design maintainable solutions, integrate WordPress and APIs, and optimize technical performance to improve conversion and digital operations.',
-    },
-    highlights: [
-      'WordPress','PHP','HTML5','CSS3','JavaScript (ES6+)','React','Next.js','GA4','GTM','GSC','SEO tecnico','SEM','SQL','APIs',
-    ],
-  },
-  {
-    title: { es: 'Desarrollador Frontend', en: 'Frontend Developer' },
-    company: 'GP3Digital, Cali (Freelance / Contrato por proyecto)',
-    period: 'Apr 2025 - Present',
-    description: {
-      es: 'Como freelance, participo en la creacion, migracion y optimizacion de soluciones digitales para clientes de salud, comercio y agencias. He implementado blogs y sitios WordPress optimizando velocidad y SEO; desarrollado productos escalables con React, Next.js y TypeScript; diseniado interfaces responsivas con foco en UX, accesibilidad (WCAG) y Core Web Vitals; integrado CMS (Strapi y WordPress), Firebase y APIs; y automatizado captura de leads y contacto con Zapier y formularios conectados a CRM.',
-      en: 'As a freelance developer, I work on creation, migration, and optimization of digital solutions for health, commerce, and agency clients. I have implemented WordPress blogs and websites improving speed and SEO; delivered scalable products with React, Next.js, and TypeScript; designed responsive interfaces focused on UX, accessibility (WCAG), and Core Web Vitals; integrated CMS platforms (Strapi and WordPress), Firebase, and external APIs; and automated lead capture and contact workflows with Zapier and CRM-connected forms.',
-    },
-    highlights: ['WordPress','React.js','Next.js','TypeScript','Strapi','Firebase','HTML','CSS','SEO tecnico','Zapier','APIs REST','WCAG','Core Web Vitals',
-    ],
-  },
-  {
-    title: { es: 'Desarrollador Frontend', en: 'Frontend Developer' },
-    company: 'Preztel SAS, Cali',
-    period: 'Feb 2025 - Jul 2025',
-    description: {
-      es: 'Participe en el desarrollo de soluciones fintech con foco principal en aplicaciones moviles. Desarrolle una app multiplataforma para envios internacionales con React Native, priorizando rendimiento, seguridad y experiencia de usuario. Adicionalmente, contribui a plataformas web corporativas en WordPress con funcionalidades personalizadas, optimizacion tecnica (WPO), interfaces responsivas y flujo colaborativo bajo Scrum con Git/GitHub.',
-      en: 'I contributed to fintech solutions with a primary focus on mobile app development. I built a cross-platform app for international transfers using React Native, prioritizing performance, security, and user experience. I also supported corporate WordPress platforms with custom features, technical optimization (WPO), responsive interfaces, and team delivery under Scrum using Git/GitHub.',
-    },
-    highlights: [
-      'React Native',
-      'Mobile Development',
-      'Firebase',
-      'WordPress',
-      'PHP',
-      'HTML5',
-      'CSS3',
-      'JavaScript (ES6+)',
-      'WPO',
-      'Scrum',
-      'Git/GitHub',
-    ],
-  },
-  {
-    title: { es: 'Disenador y Desarrollador Web', en: 'Web Designer and Developer' },
-    company: 'Magica Escultura, Cali',
-    period: 'Aug 2024 - Feb 2025',
-    description: {
-      es: 'Estuve a cargo de la migracion, rediseno UI/UX y evolucion tecnica del e-commerce de una clinica de cirugia estetica. Lideré el desarrollo en WordPress y PHP, creando themes y plugins personalizados para mejorar la estructura del sitio, la administracion de contenidos y la escalabilidad. Ademas, implemente SEO tecnico, medicion con GA4/GTM/GSC, campanas SEM y automatizaciones para fortalecer conversion y rendimiento comercial.',
-      en: 'I led the migration, UI/UX redesign, and technical evolution of an aesthetic clinic e-commerce platform. I was responsible for WordPress and PHP development, creating custom themes and plugins to improve site structure, content administration, and scalability. I also implemented technical SEO, GA4/GTM/GSC measurement, SEM campaigns, and automations to improve conversion and commercial performance.',
-    },
-    highlights: ['WordPress','PHP','Custom Themes','Custom Plugins','UI/UX','SEO tecnico','SEM','GA4','GTM','GSC','APIs','E-commerce',
-    ],
-  },
-  {
-    title: { es: 'Desarrollador Web de Aplicaciones', en: 'Web Application Developer' },
-    company: 'Prensa y Entretenimiento, Cali',
-    period: 'May 2023 - Oct 2023',
-    description: {
-      es: 'Diseno, desarrollo y mantenimiento de sitios y apps con React, Node.js, Firebase y Strapi.',
-      en: 'Designed, developed and maintained websites and apps with React, Node.js, Firebase and Strapi.',
-    },
-    highlights: ['React.js', 'Node.js', 'TypeScript', 'Firebase', 'Strapi'],
-  },
-];
 
 const Experience = ({ language }: ExperienceProps) => {
   const ref = useRef(null);
@@ -96,12 +22,12 @@ const Experience = ({ language }: ExperienceProps) => {
       ? [
           'Arquitectura Frontend (React/Next.js)',
           'Desarrollo WordPress y PHP',
-          'SEO tecnico y analitica digital',
+          'SEO técnico y analítica digital',
           'Performance web y Core Web Vitals',
-          'Automatizacion con n8n y Zapier',
-          'Integracion de APIs y CMS',
-          'Migraciones y optimizacion de plataformas',
-          'UX orientada a conversion',
+          'Automatización con n8n y Zapier',
+          'Integración de APIs y CMS',
+          'Migraciones y optimización de plataformas',
+          'UX orientada a conversión',
         ]
       : [
           'Frontend Architecture (React/Next.js)',

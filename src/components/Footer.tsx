@@ -20,19 +20,19 @@ const Footer = ({ language }: FooterProps) => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex flex-col items-center md:items-start gap-2">
             <a href="#" className="font-display text-xl font-bold">
-              <span className="gradient-text">Juan Jose</span>
+              <span className="gradient-text">Juan José</span>
               <span className="text-foreground"> Borrero</span>
             </a>
             <p className="text-sm text-muted-foreground">
               {language === 'es'
-                ? `© ${currentYear} Juan Jose Borrero. Cali, Colombia.`
-                : `© ${currentYear} Juan Jose Borrero. Cali, Colombia.`}
+                ? `© ${currentYear} Juan José Borrero. Cali, Colombia.`
+                : `© ${currentYear} Juan José Borrero. Cali, Colombia.`}
             </p>
           </div>
 
           <div className="flex items-center gap-3">
             <a
-              href="https://github.com/juanjosbg"
+              href="https://github.com/juanjosbg" aria-label="GitHub"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300"
@@ -40,7 +40,7 @@ const Footer = ({ language }: FooterProps) => {
               <Github size={18} />
             </a>
             <a
-              href="https://www.linkedin.com/in/juanjoseborrero/"
+              href="https://www.linkedin.com/in/juanjoseborrero/" aria-label="LinkedIn"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300"
@@ -48,7 +48,7 @@ const Footer = ({ language }: FooterProps) => {
               <Linkedin size={18} />
             </a>
             <a
-              href="mailto:juanjoseborrero95@gmail.com"
+              href="mailto:juanjoseborrero95@gmail.com" aria-label="Email"
               className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300"
             >
               <Mail size={18} />

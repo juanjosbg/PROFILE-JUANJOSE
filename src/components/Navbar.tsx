@@ -109,6 +109,8 @@ const Navbar = ({ language, onLanguageChange }: NavbarProps) => {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="md:hidden w-10 h-10 rounded-xl bg-muted flex items-center justify-center"
               aria-label={language === 'es' ? 'Abrir menú' : 'Open menu'}
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-menu"
             >
               {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -119,6 +121,7 @@ const Navbar = ({ language, onLanguageChange }: NavbarProps) => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
+            id="mobile-menu"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}

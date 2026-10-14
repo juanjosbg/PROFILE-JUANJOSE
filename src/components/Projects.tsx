@@ -1,4 +1,5 @@
-﻿import { motion, useInView } from 'framer-motion';
+import { projects } from '@/data/projects';
+import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { ExternalLink, Github } from 'lucide-react';
 
@@ -8,104 +9,18 @@ interface ProjectsProps {
   language: Language;
 }
 
-type Project = {
-  title: string;
-  description: Record<Language, string>;
-  tech: string[];
-  image: string;
-  liveUrl: string;
-  githubUrl: string;
-  status: 'active' | 'progress' | 'building';
-  featured: boolean;
-};
 
-const projects: Project[] = [
-  {
-    title: 'Loki Ecommerce',
-    description: {
-      es: 'E-commerce para marca de moda con autenticación OTP, pagos vía API e inventario por SKU en Supabase. Incluye una capa completa de crecimiento digital con SEO técnico, Google Tag Manager, Google Analytics 4 y Google Search Console, además de automatizaciones con n8n e integración de reels en tiempo real desde Instagram.',
-      en: 'E-commerce for a fashion brand with OTP authentication, API-based payments, and SKU-level inventory in Supabase. It includes a full digital growth layer with technical SEO, Google Tag Manager, Google Analytics 4, and Google Search Console, plus n8n automations and a real-time Instagram reels integration.',
-    },
-    tech: [
-      'React',
-      'TypeScript',
-      'Supabase',
-      'Node.js',
-      'Vercel',
-      'Technical SEO',
-      'GA4',
-      'GTM',
-      'GSC',
-      'n8n',
-      'Instagram Reels API',
-    ],
-    image: '/images/lOKI.png',
-    liveUrl: 'https://www.thelokistore.com/',
-    githubUrl: 'https://github.com/juanjosbg/Loki-Ecommerce',
-    status: 'building',
-    featured: true,
-  },
-  {
-    title: 'Gym Ecommerce Hub',
-    description: {
-      es: 'Tienda fitness para Mexico con panel admin, analitica de ventas, control de inventario y automatizaciones para agendamiento, mensajes y leads.',
-      en: 'Fitness e-commerce for Mexico with admin panel, sales analytics, inventory control, and automations for scheduling, messaging, and leads.',
-    },
-    tech: ['React', 'TypeScript', 'Supabase', 'n8n'],
-    image: '/images/Fitmex.png',
-    liveUrl: 'https://gym-ecommerce-hub.vercel.app/',
-    githubUrl: 'https://github.com/juanjosbg/gymEcommerce-hub',
-    status: 'active',
-    featured: true,
-  },
-  {
-    title: 'GP3Digital Web',
-    description: {
-      es: 'Sitio corporativo para agencia de marketing digital con proceso de migración y actualizaciones técnicas continuas. Se mejoró el SEO técnico, la medición con Google Tag Manager y Google Analytics, y actualmente se integra n8n para automatizar flujos de captación y seguimiento.',
-      en: 'Corporate website for a digital marketing agency with an ongoing migration and technical updates. Technical SEO was improved, measurement was optimized through Google Tag Manager and Google Analytics, and n8n is being integrated to automate lead capture and follow-up workflows.',
-    },
-    tech: ['React', 'TailwindCSS', 'Vercel', 'Strapi', 'Technical SEO', 'GTM', 'GA4', 'n8n'],
-    image: '/images/Gp3.png',
-    liveUrl: 'https://gp3-app.vercel.app/',
-    githubUrl: 'https://github.com/Gp3Marketing/Gp3App',
-    status: 'active',
-    featured: true,
-  },
-  {
-    title: 'CIMELCO',
-    description: {
-      es: 'Rediseño y migración del sitio de una empresa de servicios eléctricos hacia una plataforma dinámica en React, incorporando un blog administrable con Strapi. Se optimizó la analítica digital y se fortaleció la estrategia de SEO y SEM para mejorar el posicionamiento y la captación de tráfico calificado.',
-      en: 'Redesign and migration of an electrical services company website into a dynamic React platform, including a Strapi-powered blog management section. Digital analytics were enhanced, and SEO/SEM strategy was strengthened to improve search positioning and qualified traffic acquisition.',
-    },
-    tech: ['React', 'Strapi', 'SEO', 'SEM', 'Analytics', 'Netlify'],
-    image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=400&h=800&fit=crop',
-    liveUrl: 'https://deploybranch--cimelco.netlify.app/',
-    githubUrl: 'https://github.com/juanjosbg/CIMELCO',
-    status: 'active',
-    featured: false,
-  },
-  {
-    title: 'Chatbot App',
-    description: {
-      es: 'Aplicacion de chatbot con arquitectura tipo ChatGPT para respuestas inteligentes.',
-      en: 'Chatbot application with ChatGPT-like architecture for intelligent responses.',
-    },
-    tech: ['Python', 'AI', 'API'],
-    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=800&fit=crop',
-    liveUrl: '#',
-    githubUrl: 'https://github.com/juanjosbg/Chatbot-app',
-    status: 'progress',
-    featured: false,
-  },
-];
 
-const PhoneMockup = ({ image, title }: { image: string; title: string }) => (
+const PhoneMockup = ({ image, title }: { image: string; title: string }) => {
+  const [failed, setFailed] = useState(false);
+  return (
   <div className="phone-mockup w-48 md:w-56 mx-auto">
     <div className="phone-mockup-screen">
-      <img src={image} alt={title} className="w-full h-full object-cover" />
+      {image && !failed ? <img src={image} alt={`Screenshot · ${title}`} loading="lazy" decoding="async" width={224} height={460} onError={() => setFailed(true)} className="w-full h-full object-cover" /> : <div className="w-full h-full min-h-96 bg-gradient-to-br from-primary/20 via-muted to-background flex items-center justify-center p-6 text-center font-display text-xl">{title}</div>}
     </div>
   </div>
 );
+};
 
 const Projects = ({ language }: ProjectsProps) => {
   const ref = useRef(null);
@@ -119,17 +34,17 @@ const Projects = ({ language }: ProjectsProps) => {
       ? {
           label: 'Portafolio',
           title: 'Proyectos Destacados',
-          subtitle: 'Seleccion de proyectos reales en los que he trabajado',
+          subtitle: 'Selección de proyectos reales en los que he trabajado',
           otherProjects: 'Otros Proyectos',
-          readMore: 'Leer mas',
+          readMore: 'Leer más',
           readLess: 'Leer menos',
           demo: 'Ver demo',
           repo: 'Repositorio',
-          code: 'Codigo',
+          code: 'Código',
           status: {
             active: 'Activo',
             progress: 'En desarrollo',
-            building: 'En construccion',
+            building: 'En construcción',
           },
         }
       : {

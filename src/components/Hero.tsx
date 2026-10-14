@@ -11,21 +11,23 @@ const Hero = ({ language }: HeroProps) => {
   const text =
     language === 'es'
       ? {
-          title: 'Fullstack Engineer',
+          title: 'React + Inteligencia Artificial',
           subtitle:
-            'REACT \u00b7 NODE.JS \u00b7 APIs REST \u00b7 SQL \u00b7 AUTOMATIZACI\u00d3N Y ARQUITECTURA WEB',
+            'REACT · TYPESCRIPT · AGENTES DE IA · AUTOMATIZACIÓN',
           description:
-            'Soy Juan Jos\u00e9 Borrero, Fullstack Engineer especializado en desarrollo web y arquitectura de aplicaciones: construyo soluciones robustas, escalables y mantenibles con React, Node.js, APIs REST y SQL.',
+            'Soy Juan José Borrero. Construyo aplicaciones con React y TypeScript e integro inteligencia artificial para conectar herramientas, automatizar procesos y crear experiencias útiles.',
           viewProjects: 'Ver proyectos',
           contact: 'Contactar',
+          cv: 'Descargar CV',
         }
       : {
-          title: 'Fullstack Engineer',
-          subtitle: 'REACT · NODE.JS · REST APIs · SQL · AUTOMATION & WEB ARCHITECTURE',
+          title: 'React + Artificial Intelligence',
+          subtitle: 'REACT · TYPESCRIPT · AI AGENTS · AUTOMATION',
           description:
-            'I am Juan Jose Borrero, a Fullstack Engineer focused on building fast, scalable, and result-driven websites and web applications.',
+            'I am Juan José Borrero. I build applications with React and TypeScript and integrate artificial intelligence to connect tools, automate processes and create useful experiences.',
           viewProjects: 'View projects',
           contact: 'Contact',
+          cv: 'Download CV',
         };
 
   return (
@@ -99,7 +101,7 @@ const Hero = ({ language }: HeroProps) => {
             className="flex items-center gap-3 mb-12"
           >
             <a
-              href="https://github.com/juanjosbg"
+              href="https://github.com/juanjosbg" aria-label="GitHub"
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 rounded-full bg-card border border-border flex items-center justify-center hover:bg-muted hover:border-primary/30 transition-all duration-300"
@@ -107,7 +109,7 @@ const Hero = ({ language }: HeroProps) => {
               <Github size={20} />
             </a>
             <a
-              href="https://www.linkedin.com/in/juanjoseborrero/"
+              href="https://www.linkedin.com/in/juanjoseborrero/" aria-label="LinkedIn"
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 rounded-full bg-card border border-border flex items-center justify-center hover:bg-muted hover:border-primary/30 transition-all duration-300"
@@ -115,7 +117,7 @@ const Hero = ({ language }: HeroProps) => {
               <Linkedin size={20} />
             </a>
             <a
-              href="mailto:juanjoseborrero95@gmail.com"
+              href="mailto:juanjoseborrero95@gmail.com" aria-label="Email"
               className="w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center hover:scale-105 transition-all duration-300"
             >
               <Mail size={20} />
@@ -134,6 +136,7 @@ const Hero = ({ language }: HeroProps) => {
             <a href="#contact" className="btn-secondary">
               {text.contact}
             </a>
+            <a href="/cv-juan-jose-borrero.pdf" download className="btn-secondary">{text.cv}</a>
           </motion.div>
 
           <motion.div
@@ -143,7 +146,7 @@ const Hero = ({ language }: HeroProps) => {
             className="mt-10 flex justify-center sm:absolute sm:-bottom-20 sm:left-1/2 sm:-translate-x-1/2 sm:mt-0"
           >
             <motion.a
-              href="#about"
+              href="#about" aria-label={language === 'es' ? 'Ir a Sobre mí' : 'Go to About'}
               animate={{ y: [0, 8, 0] }}
               transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
               className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors"

@@ -16,20 +16,20 @@ const Contact = ({ language }: ContactProps) => {
     language === 'es'
       ? {
           label: 'Contacto',
-          title: 'Tienes un proyecto?',
-          subtitle: 'Hablemos sobre como puedo ayudarte con tu proxima idea',
+          title: '¿Tienes un proyecto?',
+          subtitle: 'Hablemos sobre cómo puedo ayudarte con tu próxima idea',
           ctaTitle: 'Conversemos',
-          ctaBody: 'Ya sea que necesites un sitio web o una aplicacion, estoy disponible.',
+          ctaBody: 'Si necesitas una aplicación con React o una integración con IA, conversemos.',
           sendEmail: 'Enviar email',
-          findMe: 'o encuentrame en',
-          location: 'Ubicacion',
+          findMe: 'o encuéntrame en',
+          location: 'Ubicación',
         }
       : {
           label: 'Contact',
           title: 'Do you have a project?',
           subtitle: 'Let us talk about how I can help with your next idea',
           ctaTitle: 'Let us talk',
-          ctaBody: 'Whether you need a website or an app, I am available.',
+          ctaBody: 'If you need a React application or an AI integration, let’s talk.',
           sendEmail: 'Send email',
           findMe: 'or find me on',
           location: 'Location',
@@ -83,7 +83,7 @@ const Contact = ({ language }: ContactProps) => {
                 </div>
                 <div className="text-left">
                   <p className="text-sm text-muted-foreground">Email</p>
-                  <p className="font-medium">juanjoseborrero95@gmail.com</p>
+                  <p className="font-medium break-all">juanjoseborrero95@gmail.com</p>
                 </div>
               </div>
               <div className="flex items-center gap-4 p-4 rounded-xl bg-muted/50">
@@ -99,7 +99,7 @@ const Contact = ({ language }: ContactProps) => {
 
             <div className="flex items-center justify-center gap-4">
               <a
-                href="https://github.com/juanjosbg"
+                href="https://github.com/juanjosbg" aria-label="GitHub"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300"
@@ -107,7 +107,7 @@ const Contact = ({ language }: ContactProps) => {
                 <Github size={20} />
               </a>
               <a
-                href="https://www.linkedin.com/in/juanjoseborrero/"
+                href="https://www.linkedin.com/in/juanjoseborrero/" aria-label="LinkedIn"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300"

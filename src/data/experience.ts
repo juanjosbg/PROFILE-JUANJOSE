@@ -1,0 +1,80 @@
+import type { ExperienceItem } from '../types/experience';
+export const experiences: ExperienceItem[] = [
+  {
+    // TODO: confirm exact job title and dates with Juan José.
+    title: { es: 'TODO: cargo en LOKI', en: 'TODO: LOKI job title' },
+    company: 'LOKI',
+    period: 'TODO: fechas / dates',
+    description: {
+      es: 'Desarrollo de un agente de WhatsApp con inteligencia artificial para LOKI, con Meta Cloud API, Supabase Edge Functions y AWS. Integraciones con Claude y Codex para automatizar procesos y conectar herramientas con el contexto de la tienda.',
+      en: 'Development of an AI WhatsApp agent for LOKI using Meta Cloud API, Supabase Edge Functions and AWS. Claude and Codex integrations to automate processes and connect tools with the store context.',
+    },
+    highlights: ['IA', 'Meta Cloud API', 'Supabase Edge Functions', 'AWS', 'Claude', 'Codex'],
+  },
+  {
+    title: { es: 'Web Designer & Developer', en: 'Web Designer & Developer' },
+    company: 'Clínica Colombia ES, Cali',
+    period: 'Jul 2025 - Present',
+    description: {
+      es: 'Lidero iniciativas de desarrollo de software y desarrollo web para la clínica, con foco en arquitectura frontend, estructura de componentes reutilizables y escalabilidad en React/Next.js. Diseño soluciones mantenibles, integro WordPress y APIs, y optimizo el rendimiento técnico para mejorar conversión y operación digital.',
+      en: 'I lead software and web development initiatives for the clinic, focused on frontend architecture, reusable component structure, and scalability with React/Next.js. I design maintainable solutions, integrate WordPress and APIs, and optimize technical performance to improve conversión and digital operations.',
+    },
+    highlights: [
+      'WordPress','PHP','HTML5','CSS3','JavaScript (ES6+)','React','Next.js','GA4','GTM','GSC','SEO técnico','SEM','SQL','APIs',
+    ],
+  },
+  {
+    title: { es: 'Desarrollador Frontend', en: 'Frontend Developer' },
+    company: 'GP3Digital, Cali (Freelance / Contrato por proyecto)',
+    period: 'Apr 2025 - Present',
+    description: {
+      es: 'Como freelance, participo en la creación, migración y optimización de soluciones digitales para clientes de salud, comercio y agencias. He implementado blogs y sitios WordPress optimizando velocidad y SEO; desarrollado productos escalables con React, Next.js y TypeScript; diseñado interfaces responsivas con foco en UX, accesibilidad (WCAG) y Core Web Vitals; integrado CMS (Strapi y WordPress), Firebase y APIs; y automatizado captura de leads y contacto con Zapier y formularios conectados a CRM.',
+      en: 'As a freelance developer, I work on creation, migration, and optimization of digital solutions for health, commerce, and agency clients. I have implemented WordPress blogs and websites improving speed and SEO; delivered scalable products with React, Next.js, and TypeScript; designed responsive interfaces focused on UX, accessibility (WCAG), and Core Web Vitals; integrated CMS platforms (Strapi and WordPress), Firebase, and external APIs; and automated lead capture and contact workflows with Zapier and CRM-connected forms.',
+    },
+    highlights: ['WordPress','React.js','Next.js','TypeScript','Strapi','Firebase','HTML','CSS','SEO técnico','Zapier','APIs REST','WCAG','Core Web Vitals',
+    ],
+  },
+  {
+    title: { es: 'Desarrollador Frontend', en: 'Frontend Developer' },
+    company: 'Preztel SAS, Cali',
+    period: 'Feb 2025 - Jul 2025',
+    description: {
+      es: 'Participé en el desarrollo de soluciones fintech con foco principal en aplicaciones móviles. Desarrollé una app multiplataforma para envíos internacionales con React Native, priorizando rendimiento, seguridad y experiencia de usuario. Adicionalmente, contribuí a plataformas web corporativas en WordPress con funcionalidades personalizadas, optimización técnica (WPO), interfaces responsivas y flujo colaborativo bajo Scrum con Git/GitHub.',
+      en: 'I contributed to fintech solutions with a primary focus on mobile app development. I built a cross-platform app for international transfers using React Native, prioritizing performance, security, and user experience. I also supported corporate WordPress platforms with custom features, technical optimization (WPO), responsive interfaces, and team delivery under Scrum using Git/GitHub.',
+    },
+    highlights: [
+      'React Native',
+      'Mobile Development',
+      'Firebase',
+      'WordPress',
+      'PHP',
+      'HTML5',
+      'CSS3',
+      'JavaScript (ES6+)',
+      'WPO',
+      'Scrum',
+      'Git/GitHub',
+    ],
+  },
+  {
+    title: { es: 'Diseñador y Desarrollador Web', en: 'Web Designer and Developer' },
+    company: 'Mágica Escultura, Cali',
+    period: 'Aug 2024 - Feb 2025',
+    description: {
+      es: 'Estuve a cargo de la migración, rediseño UI/UX y evolución técnica del e-commerce de una clínica de cirugía estetica. Lideré el desarrollo en WordPress y PHP, creando themes y plugins personalizados para mejorar la estructura del sitio, la administración de contenidos y la escalabilidad. Además, implementé SEO técnico, medición con GA4/GTM/GSC, campañas SEM y automatizaciones para fortalecer conversión y rendimiento comercial.',
+      en: 'I led the migration, UI/UX redesign, and technical evolution of an aesthetic clinic e-commerce platform. I was responsible for WordPress and PHP development, creating custom themes and plugins to improve site structure, content administration, and scalability. I also implemented technical SEO, GA4/GTM/GSC measurement, SEM campaigns, and automations to improve conversión and commercial performance.',
+    },
+    highlights: ['WordPress','PHP','Custom Themes','Custom Plugins','UI/UX','SEO técnico','SEM','GA4','GTM','GSC','APIs','E-commerce',
+    ],
+  },
+  {
+    title: { es: 'Desarrollador Web de Aplicaciones', en: 'Web Application Developer' },
+    company: 'Prensa y Entretenimiento, Cali',
+    period: 'May 2023 - Oct 2023',
+    description: {
+      es: 'Diseño, desarrollo y mantenimiento de sitios y apps con React, Node.js, Firebase y Strapi.',
+      en: 'Designed, developed and maintained websites and apps with React, Node.js, Firebase and Strapi.',
+    },
+    highlights: ['React.js', 'Node.js', 'TypeScript', 'Firebase', 'Strapi'],
+  },
+];
