@@ -1,154 +1,31 @@
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { ExternalLink } from 'lucide-react';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useCertificates, sortCertificates } from '@/hooks/use-certificates';
+import { localCertificates } from '@/data/certificates';
+import CertificateCard from './CertificateCard';
+import CertificateViewer from './CertificateViewer';
+import type { Certificate, CertificateCategory, Language } from '@/types/certificate';
 
-type Language = 'es' | 'en';
-
-interface CertificationsProps {
-  language: Language;
+export default function Certifications({ language, recent = false }: { language: Language; recent?: boolean }) {
+ const [category,setCategory] = useState<CertificateCategory | 'all'>('all');
+ const [search,setSearch] = useState('');
+ const [selected,setSelected] = useState<Certificate | null>(null);
+ const query = useCertificates();
+ const text = language === 'es' ? { title:recent?'Logros recientes':'Formación y certificaciones',subtitle:'Aprendizaje continuo en React, inteligencia artificial y desarrollo web.',all:'Todos',hackathon:'Hackathons',course:'Cursos',certification:'Certificaciones',award:'Premios',search:'Buscar por título, emisor o skill',loading:'Cargando certificados…',error:'No se pudo conectar con Supabase. Mostramos el respaldo local.',retry:'Reintentar',empty:'No hay certificados que coincidan con la búsqueda.',featured:'Logros destacados',more:'Ver todas las certificaciones',category:'Filtrar por categoría' } : {title:recent?'Recent achievements':'Education and certifications',subtitle:'Continuous learning in React, artificial intelligence and web development.',all:'All',hackathon:'Hackathons',course:'Courses',certification:'Certifications',award:'Awards',search:'Search by title, issuer or skill',loading:'Loading certificates…',error:'Could not connect to Supabase. Showing the local backup.',retry:'Retry',empty:'No certificates match your search.',featured:'Featured achievements',more:'View all certifications',category:'Filter by category'};
+ const rows = query.data ?? (query.isError ? sortCertificates(localCertificates) : []);
+ const normalize = (value: string) => value.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+ const matches = rows.filter(row => (category==='all'||row.category===category) && normalize([row.title_es,row.title_en,row.issuer,...row.skills].join(' ')).includes(normalize(search.trim())));
+ const featured = recent ? [] : matches.filter(row=>row.featured);
+ const grid = recent ? rows.slice(0,3) : matches.filter(row=>!row.featured);
+ return <section id="certifications" className="py-20 md:py-28"><div className="container mx-auto px-4 md:px-6">
+  <div className="text-center mb-12"><h2 className="section-title mb-4">{text.title}</h2><p className="section-subtitle mx-auto">{text.subtitle}</p></div>
+  {query.isPending && <p role="status" className="text-center">{text.loading}</p>}
+  {query.isError && <div role="alert" className="glass-card p-4 mb-6 flex flex-wrap gap-4 items-center"><p>{text.error}</p><button className="btn-secondary" onClick={()=>void query.refetch()}>{text.retry}</button></div>}
+  {!recent && <div className="space-y-5 mb-10"><label className="grid gap-2 max-w-xl mx-auto">{text.search}<input type="search" className="admin-input" value={search} onChange={e=>setSearch(e.target.value)}/></label><div role="group" aria-label={text.category} className="flex flex-wrap gap-2 justify-center">{(['all','hackathon','course','certification','award'] as const).map(value=><button key={value} className={category===value?'btn-primary':'btn-secondary'} aria-pressed={category===value} onClick={()=>setCategory(value)}>{text[value]}</button>)}</div></div>}
+  {featured.length>0 && <div className="mb-12"><h3 className="text-xl font-semibold mb-5">{text.featured}</h3><div className="grid lg:grid-cols-2 gap-6">{featured.map(row=><CertificateCard key={row.id} certificate={row} language={language} large onView={()=>setSelected(row)}/>)}</div></div>}
+  <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">{grid.map(row=><CertificateCard key={row.id} certificate={row} language={language} onView={()=>setSelected(row)}/>)}</div>
+  {!query.isPending && matches.length===0 && <p role="status" className="text-center py-10">{text.empty}</p>}
+  {recent && <div className="text-center mt-8"><Link to="/certifications" className="btn-secondary">{text.more} →</Link></div>}
+  <CertificateViewer certificate={selected} language={language} onClose={()=>setSelected(null)}/>
+ </div></section>;
 }
-
-type CertificateDoc = {
-  title: string;
-  fileName: string;
-  url: string;
-  imagen: string;
-};
-
-const certificateDocs: CertificateDoc[] = [
-  {
-    title: 'Backend',
-    fileName: 'diploma-backend.pdf',
-    url: '/images/Certificados/diploma-backend.pdf',
-    imagen: '',
-  },
-  {
-    title: 'Bootstrap',
-    fileName: 'diploma-bootstrap.pdf',
-    url: '/images/Certificados/diploma-bootstrap.pdf',
-    imagen: '',
-  },
-  {
-    title: 'CSS Grid Layout',
-    fileName: 'diploma-css-grid-layout.pdf',
-    url: '/images/Certificados/diploma-css-grid-layout.pdf',
-    imagen: '',
-  },
-  {
-    title: 'Frontend Developer',
-    fileName: 'diploma-frontend-developer.pdf',
-    url: '/images/Certificados/diploma-frontend-developer.pdf',
-    imagen: '',
-  },
-  {
-    title: 'Git y GitHub',
-    fileName: 'diploma-git-github.pdf',
-    url: '/images/Certificados/diploma-git-github.pdf',
-    imagen: '',
-  },
-  {
-    title: 'HTML y CSS',
-    fileName: 'diploma-html-css-2020.pdf',
-    url: '/images/Certificados/diploma-html-css-2020.pdf',
-    imagen: '',
-  },
-  {
-    title: 'Laboratorio JavaScript',
-    fileName: 'diploma-laboratorio-javascript-prueba.pdf',
-    url: '/images/Certificados/diploma-laboratorio-javascript-prueba.pdf',
-    imagen: '',
-  },
-  {
-    title: 'n8n Low-Code',
-    fileName: 'diploma-n8n-lowcode.pdf',
-    url: '/images/Certificados/diploma-n8n-lowcode.pdf',
-    imagen: '',
-  },
-  {
-    title: 'Tailwind CSS',
-    fileName: 'diploma-tailwind-css-2020.pdf',
-    url: '/images/Certificados/diploma-tailwind-css-2020.pdf',
-    imagen: '',
-  },
-  {
-    title: 'WooCommerce Temas',
-    fileName: 'diploma-woocommerce-temas.pdf',
-    url: '/images/Certificados/diploma-woocommerce-temas.pdf',
-    imagen: '',
-  },
-];
-
-const Certifications = ({ language }: CertificationsProps) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
-
-  const text =
-    language === 'es'
-      ? {
-        label: 'Certificaciones',
-        title: 'Formación y Certificaciones',
-        subtitle: 'Una recopilación de certificaciones que respaldan mi crecimiento profesional continuo.',
-        view: 'Ver certificado',
-      }
-      : {
-        label: 'Certifications',
-        title: 'Education & Certifications',
-        subtitle: 'A collection of certifications that support my continuous professional growth.',
-        view: 'View certificate',
-      };
-
-  return (
-    <section id="certifications" className="py-24 md:py-32 relative overflow-hidden" ref={ref}>
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-background" />
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-14"
-        >
-          <span className="text-primary font-medium text-sm uppercase tracking-wider mb-4 block">
-            {text.label}
-          </span>
-          <h2 className="section-title mb-4">{text.title}</h2>
-          <p className="section-subtitle mx-auto">{text.subtitle}</p>
-        </motion.div>
-
-        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
-          {certificateDocs.map((doc, index) => (
-            <motion.article
-              key={doc.fileName}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: 0.08 * index }}
-              className="glass-card border border-primary/20 overflow-hidden"
-            >
-              <div className="relative group rounded-xl overflow-hidden border border-border bg-muted/30 h-64">
-                <div className="absolute inset-0 overflow-hidden">
-                  <iframe
-                    src={`${doc.url}#page=1&toolbar=0&navpanes=0&scrollbar=0&view=FitH&zoom=page-width`}
-                    title={doc.title}
-                    className="pointer-events-none absolute -left-1 -top-1 w-[calc(100%+18px)] h-[calc(100%+18px)] border-0"
-                  />
-                </div>
-                <a
-                  href={doc.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="absolute inset-0 bg-background/70 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"
-                >
-                  <span className="btn-primary text-sm py-2 px-4">
-                    <ExternalLink size={14} />
-                    {text.view}
-                  </span>
-                </a>
-              </div>
-            </motion.article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
-export default Certifications;
