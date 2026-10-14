@@ -1,0 +1,226 @@
+import type { Certificate } from '../types/certificate';
+// TODO: confirm dates of legacy courses in /admin.
+export const localCertificates: Certificate[] = [
+  {
+    "id": "00000000-0000-4000-8000-000000000011",
+    "created_at": "2026-10-14T00:00:00Z",
+    "title_es": "Builder Certificate · X-Mate",
+    "title_en": "Builder Certificate · X-Mate",
+    "issuer": "ETH CALI · Universidad Icesi, Cali",
+    "category": "hackathon",
+    "issued_at": "2026-09-20",
+    "credential_id": "EAGCALI26-C449RLBS",
+    "verify_url": null,
+    "file_url": null,
+    "thumbnail_url": null,
+    "skills": [
+      "Ethereum",
+      "React",
+      "IA"
+    ],
+    "description_es": "EAG Global Buildathon 2026 · Ethereum Builders Tour, capítulo Colombia. 19 y 20 de septiembre de 2026. Ethereum Mainnet · Token #29.",
+    "description_en": "EAG Global Buildathon 2026 · Ethereum Builders Tour, Colombia chapter. September 19–20, 2026. Ethereum Mainnet · Token #29.",
+    "featured": true,
+    "sort_order": 0
+  },
+  {
+    "id": "00000000-0000-4000-8000-000000000001",
+    "created_at": "2026-10-14T00:00:00Z",
+    "title_es": "Backend",
+    "title_en": "Backend",
+    "issuer": "Platzi",
+    "category": "course",
+    "issued_at": null,
+    "credential_id": null,
+    "verify_url": null,
+    "file_url": "/images/Certificados/diploma-backend.pdf",
+    "thumbnail_url": null,
+    "skills": [
+      "Backend"
+    ],
+    "description_es": null,
+    "description_en": null,
+    "featured": false,
+    "sort_order": 1
+  },
+  {
+    "id": "00000000-0000-4000-8000-000000000002",
+    "created_at": "2026-10-14T00:00:00Z",
+    "title_es": "Bootstrap",
+    "title_en": "Bootstrap",
+    "issuer": "Platzi",
+    "category": "course",
+    "issued_at": null,
+    "credential_id": null,
+    "verify_url": null,
+    "file_url": "/images/Certificados/diploma-bootstrap.pdf",
+    "thumbnail_url": null,
+    "skills": [
+      "Bootstrap"
+    ],
+    "description_es": null,
+    "description_en": null,
+    "featured": false,
+    "sort_order": 2
+  },
+  {
+    "id": "00000000-0000-4000-8000-000000000003",
+    "created_at": "2026-10-14T00:00:00Z",
+    "title_es": "CSS Grid Layout",
+    "title_en": "CSS Grid Layout",
+    "issuer": "Platzi",
+    "category": "course",
+    "issued_at": null,
+    "credential_id": null,
+    "verify_url": null,
+    "file_url": "/images/Certificados/diploma-css-grid-layout.pdf",
+    "thumbnail_url": null,
+    "skills": [
+      "CSS Grid Layout"
+    ],
+    "description_es": null,
+    "description_en": null,
+    "featured": false,
+    "sort_order": 3
+  },
+  {
+    "id": "00000000-0000-4000-8000-000000000004",
+    "created_at": "2026-10-14T00:00:00Z",
+    "title_es": "Frontend Developer",
+    "title_en": "Frontend Developer",
+    "issuer": "Platzi",
+    "category": "course",
+    "issued_at": null,
+    "credential_id": null,
+    "verify_url": null,
+    "file_url": "/images/Certificados/diploma-frontend-developer.pdf",
+    "thumbnail_url": null,
+    "skills": [
+      "Frontend Developer"
+    ],
+    "description_es": null,
+    "description_en": null,
+    "featured": false,
+    "sort_order": 4
+  },
+  {
+    "id": "00000000-0000-4000-8000-000000000005",
+    "created_at": "2026-10-14T00:00:00Z",
+    "title_es": "Git y GitHub",
+    "title_en": "Git y GitHub",
+    "issuer": "Platzi",
+    "category": "course",
+    "issued_at": null,
+    "credential_id": null,
+    "verify_url": null,
+    "file_url": "/images/Certificados/diploma-git-github.pdf",
+    "thumbnail_url": null,
+    "skills": [
+      "Git y GitHub"
+    ],
+    "description_es": null,
+    "description_en": null,
+    "featured": false,
+    "sort_order": 5
+  },
+  {
+    "id": "00000000-0000-4000-8000-000000000006",
+    "created_at": "2026-10-14T00:00:00Z",
+    "title_es": "HTML y CSS",
+    "title_en": "HTML y CSS",
+    "issuer": "Platzi",
+    "category": "course",
+    "issued_at": null,
+    "credential_id": null,
+    "verify_url": null,
+    "file_url": "/images/Certificados/diploma-html-css-2020.pdf",
+    "thumbnail_url": null,
+    "skills": [
+      "HTML y CSS"
+    ],
+    "description_es": null,
+    "description_en": null,
+    "featured": false,
+    "sort_order": 6
+  },
+  {
+    "id": "00000000-0000-4000-8000-000000000007",
+    "created_at": "2026-10-14T00:00:00Z",
+    "title_es": "Laboratorio JavaScript",
+    "title_en": "Laboratorio JavaScript",
+    "issuer": "Platzi",
+    "category": "course",
+    "issued_at": null,
+    "credential_id": null,
+    "verify_url": null,
+    "file_url": "/images/Certificados/diploma-laboratorio-javascript-prueba.pdf",
+    "thumbnail_url": null,
+    "skills": [
+      "Laboratorio JavaScript"
+    ],
+    "description_es": null,
+    "description_en": null,
+    "featured": false,
+    "sort_order": 7
+  },
+  {
+    "id": "00000000-0000-4000-8000-000000000008",
+    "created_at": "2026-10-14T00:00:00Z",
+    "title_es": "n8n Low-Code",
+    "title_en": "n8n Low-Code",
+    "issuer": "Platzi",
+    "category": "course",
+    "issued_at": null,
+    "credential_id": null,
+    "verify_url": null,
+    "file_url": "/images/Certificados/diploma-n8n-lowcode.pdf",
+    "thumbnail_url": null,
+    "skills": [
+      "n8n Low-Code"
+    ],
+    "description_es": null,
+    "description_en": null,
+    "featured": false,
+    "sort_order": 8
+  },
+  {
+    "id": "00000000-0000-4000-8000-000000000009",
+    "created_at": "2026-10-14T00:00:00Z",
+    "title_es": "Tailwind CSS",
+    "title_en": "Tailwind CSS",
+    "issuer": "Platzi",
+    "category": "course",
+    "issued_at": null,
+    "credential_id": null,
+    "verify_url": null,
+    "file_url": "/images/Certificados/diploma-tailwind-css-2020.pdf",
+    "thumbnail_url": null,
+    "skills": [
+      "Tailwind CSS"
+    ],
+    "description_es": null,
+    "description_en": null,
+    "featured": false,
+    "sort_order": 9
+  },
+  {
+    "id": "00000000-0000-4000-8000-000000000010",
+    "created_at": "2026-10-14T00:00:00Z",
+    "title_es": "WooCommerce Temas",
+    "title_en": "WooCommerce Temas",
+    "issuer": "Platzi",
+    "category": "course",
+    "issued_at": null,
+    "credential_id": null,
+    "verify_url": null,
+    "file_url": "/images/Certificados/diploma-woocommerce-temas.pdf",
+    "thumbnail_url": null,
+    "skills": [
+      "WooCommerce Temas"
+    ],
+    "description_es": null,
+    "description_en": null,
+    "featured": false,
+    "sort_order": 10
+  }
+];
