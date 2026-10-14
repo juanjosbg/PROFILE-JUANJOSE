@@ -6,6 +6,7 @@ export const eagBuildathon = {
   title: "EAG Global Buildathon 2026",
   subtitle: "Builder Certificate · X-Mate",
   imageUrl: "/images/Certificados/eag-buildathon-2026.png",
+  fileUrl: "/images/Certificados/ETHCali-certificado-EAGCALI26-C449RLBS.pdf",
   projectUrl: "https://github.com/EmanuelDesarrollo/ethereum-app-transaction",
   blockchain: "Ethereum Mainnet · Token #29",
   dates: {

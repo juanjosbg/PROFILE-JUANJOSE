@@ -51,6 +51,14 @@ export default function CertificateCard({
             className="w-full h-full object-contain"
             onError={() => setImageFailed(true)}
           />
+        ) : row.file_url && /\.pdf(?:\?|$)/i.test(row.file_url) ? (
+          <iframe
+            src={`${row.file_url}#page=1&toolbar=0&navpanes=0&view=FitH`}
+            title={`${text.preview} ${title}`}
+            loading="lazy"
+            tabIndex={-1}
+            className="w-full h-full border-0 pointer-events-none bg-white"
+          />
         ) : (
           <div className="text-center p-8">
             <Award

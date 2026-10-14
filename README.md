@@ -64,7 +64,7 @@ La página pública se actualiza al guardar. Otras sesiones se refrescan al volv
 - Respaldo de certificados: `src/data/certificates.ts`.
 - Tipos: `src/types/`.
 
-Tech Stack usa una grilla de seis categorías (1 columna en móvil, 2 en tablet y 3 en escritorio), con chips de Simple Icons de `react-icons`, alturas según el contenido y una etiqueta de aprendizaje para IA. Los niveles por herramienta se eliminaron. Embla sigue instalado para el carrusel de certificados.
+Tech Stack usa una grilla de seis categorías (1 columna en móvil, 2 en tablet y 3 en escritorio), con chips de Simple Icons de `react-icons`, alturas según el contenido y una etiqueta de aprendizaje para IA. Los niveles por herramienta se eliminaron. Los certificados también usan una grilla; se retiró Embla al dejar de utilizarse.
 
 El portafolio contiene **6 proyectos**, con **X-Mate como primer destacado**, y los **10 PDFs** de cursos. X-Mate incluye el sello de EAG Global Buildathon 2026 y un placeholder de teléfono; añade la captura en `public/images/xmate.png` y activa la ruta comentada en sus datos. El proyecto Chatbot tiene el stack corregido conforme a [su README público](https://github.com/juanjosbg/Chatbot-app); falta una demo pública confirmada.
 
@@ -72,7 +72,7 @@ Los repositorios de Loki-Ecommerce, Gp3App y CIMELCO son privados y sus tarjetas
 
 El botón del Hero descarga el CV correspondiente al idioma: `public/images/CV/CV-Juanjose-ES.pdf` o `public/images/CV/CV-Juanjose-EN.pdf`.
 
-La sección de certificados usa `src/components/ui/carousel-08.tsx`, adaptado a los datos reales, con búsqueda, filtros y visor. La tarjeta destacada de EAG muestra los datos del NFT y el enlace a X-Mate. Añade su imagen como `public/images/Certificados/eag-buildathon-2026.png` y reconstruye: la vista previa y el botón se habilitan al detectar el archivo. Si ya tienes un archivo en Supabase, se utiliza esa URL.
+La sección de certificados usa `CertificateCard.tsx` en una grilla con búsqueda, filtros y visor. Las vistas previas de PDFs se cargan de forma diferida. La tarjeta destacada de EAG conserva los datos del NFT y el enlace a X-Mate; **Ver certificado** abre el documento oficial `public/images/Certificados/ETHCali-certificado-EAGCALI26-C449RLBS.pdf`. Opcionalmente puedes añadir `public/images/Certificados/eag-buildathon-2026.png` como miniatura; el documento que se abre sigue siendo el PDF.
 
 ## SEO y despliegue
 

@@ -11,7 +11,7 @@ export const localCertificates: Certificate[] = [
     issued_at: "2026-09-20",
     credential_id: "EAGCALI26-C449RLBS",
     verify_url: null,
-    file_url: null,
+    file_url: "/images/Certificados/ETHCali-certificado-EAGCALI26-C449RLBS.pdf",
     thumbnail_url: null,
     skills: ["Ethereum", "React Native", "IA"],
     description_es:

@@ -6,7 +6,7 @@ Se ejecutaron `npm run build`, `npm run lint` y `npm run typecheck` en cada fase
 
 Prueba pública: home, persistencia del idioma, 11 certificados del respaldo, filtros, búsqueda, modal PDF, cierre con Escape, panel sin configuración, menú y ancho móvil.
 
-La integración de X-Mate se comprobó a **375 y 1440 px**, en **claro y oscuro**, y en **español e inglés**: primer destacado, placeholder del teléfono, sello de EAG, descripción desplegable, orientación conservada de los proyectos anteriores, tarjeta horizontal de la hackathon, controles del carrusel y descarga de los dos CV. La imagen EAG aún está pendiente; se revisó su estado sin archivo.
+La integración de X-Mate se comprueba a **375 y 1440 px**, en **claro y oscuro**, y en **español e inglés**: primer destacado, placeholder del teléfono, sello de EAG, descripción desplegable, orientación conservada de los proyectos anteriores, tarjeta horizontal de la hackathon, grilla de certificados y descarga de los dos CV. El botón de la hackathon debe abrir exactamente `ETHCali-certificado-EAGCALI26-C449RLBS.pdf`, incluso cuando el registro remoto tenga una URL anterior.
 
 La grilla Tech Stack se comprobó a **375, 768 y 1440 px**, en ambos temas e idiomas: seis categorías visibles, orden Frontend → Automatización → Backend → IA → Marketing → Herramientas, logos con nombre accesible, contraste AA de los textos, foco visible en los chips, hover sin cambios de posición y respeto por movimiento reducido. No hay carrusel ni niveles por herramienta; las tarjetas principales ganan altura con su contenido y las demás mantienen su altura natural. Las herramientas anteriores se conservaron al reagruparlas.
 

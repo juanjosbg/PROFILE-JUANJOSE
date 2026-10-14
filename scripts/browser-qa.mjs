@@ -270,27 +270,38 @@ for (const width of [375, 1440]) {
         `.qa-eag-${width}-${theme}-${language}.png`,
         Buffer.from(shot.data, "base64"),
       );
+      assert.equal(
+        await evaluate(
+          `document.querySelectorAll('[aria-roledescription="carousel"]').length`,
+        ),
+        0,
+      );
       await evaluate(
-        `document.querySelector('[aria-roledescription="carousel"]').scrollIntoView()`,
+        `document.querySelector('[data-eag-certificate] button').focus();document.querySelector('[data-eag-certificate] button').click()`,
       );
-      await new Promise((resolve) => setTimeout(resolve, 450));
-      const previousTransform = await evaluate(
-        `document.querySelector('[aria-roledescription="slide"]').parentElement.style.transform`,
+      await waitFor(`!!document.querySelector('[role="dialog"] iframe')`);
+      assert.equal(
+        await evaluate(
+          `document.querySelector('[role="dialog"] iframe').getAttribute('src')`,
+        ),
+        "/images/Certificados/ETHCali-certificado-EAGCALI26-C449RLBS.pdf",
       );
       await evaluate(
-        `document.querySelector('button[aria-label=${JSON.stringify(language === "es" ? "Siguientes certificados" : "Next certificates")} ]').click()`,
+        `document.querySelector('[role="dialog"] button').focus()`,
       );
-      await waitFor(
-        `document.querySelector('[aria-roledescription="slide"]').parentElement.style.transform!==${JSON.stringify(previousTransform)}`,
-      );
-      shot = await send("Page.captureScreenshot", {
-        format: "png",
-        captureBeyondViewport: false,
+      await send("Input.dispatchKeyEvent", {
+        type: "keyDown",
+        key: "Escape",
+        code: "Escape",
+        windowsVirtualKeyCode: 27,
       });
-      await writeFile(
-        `.qa-carousel-${width}-${theme}-${language}.png`,
-        Buffer.from(shot.data, "base64"),
-      );
+      await send("Input.dispatchKeyEvent", {
+        type: "keyUp",
+        key: "Escape",
+        code: "Escape",
+        windowsVirtualKeyCode: 27,
+      });
+      await waitFor(`!document.querySelector('[role="dialog"]')`);
     }
   }
 }
@@ -304,6 +315,6 @@ for (const language of ["ES", "EN"]) {
 }
 assert.deepEqual(errors, [], "No runtime exceptions");
 console.log(
-  "PASS: home, certificates, filters, search, modal, X-Mate, award, read more, existing project layouts, carousel controls and both CVs at 375/1440 px in light/dark and es/en.",
+  "PASS: home, certificates, filters, search, modal, X-Mate, award, read more, existing project layouts, certificate grid, official EAG PDF and both CVs at 375/1440 px in light/dark and es/en.",
 );
 ws.close();

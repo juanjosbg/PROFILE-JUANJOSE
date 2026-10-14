@@ -4,9 +4,7 @@ import { useCertificates, sortCertificates } from "@/hooks/use-certificates";
 import { localCertificates } from "@/data/certificates";
 import CertificateCard from "./CertificateCard";
 import CertificateViewer from "./CertificateViewer";
-import CertificateCarouselCard from "./CertificateCarouselCard";
 import EagBuildathonCertificate from "./EagBuildathonCertificate";
-import AppleCardCarousel from "./ui/carousel-08";
 import { eagBuildathon, isEagCertificate } from "@/data/eag-buildathon";
 import type {
   Certificate,
@@ -79,7 +77,7 @@ export default function Certifications({
       ...row,
       title_es: eagBuildathon.title,
       title_en: eagBuildathon.title,
-      file_url: row.file_url ?? imageUrl,
+      file_url: eagBuildathon.fileUrl,
       thumbnail_url: row.thumbnail_url ?? imageUrl,
     };
   });
@@ -194,21 +192,21 @@ export default function Certifications({
           </div>
         )}
         {grid.length > 0 && (
-          <AppleCardCarousel
-            key={`${category}:${search}:${recent}`}
-            language={language}
-            title={text.results}
-            cards={grid.map((row) => ({
-              id: row.id,
-              content: (
-                <CertificateCarouselCard
+          <div>
+            {!recent && (
+              <h2 className="text-2xl font-semibold mb-6">{text.results}</h2>
+            )}
+            <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+              {grid.map((row) => (
+                <CertificateCard
+                  key={row.id}
                   certificate={row}
                   language={language}
                   onView={() => setSelected(row)}
                 />
-              ),
-            }))}
-          />
+              ))}
+            </div>
+          </div>
         )}
         {!query.isPending && matches.length === 0 && (
           <p role="status" className="text-center py-10">

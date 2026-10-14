@@ -56,6 +56,14 @@ export default function EagBuildathonCertificate({
             onError={() => setImageFailed(true)}
             className="max-h-[520px] w-full object-contain rounded-lg"
           />
+        ) : certificate.file_url ? (
+          <iframe
+            src={`${certificate.file_url}#page=1&toolbar=0&navpanes=0&view=FitH`}
+            title={text.preview}
+            loading="lazy"
+            tabIndex={-1}
+            className="w-full h-[320px] md:h-[440px] border-0 rounded-lg bg-white pointer-events-none"
+          />
         ) : (
           <div className="text-center">
             <Award
