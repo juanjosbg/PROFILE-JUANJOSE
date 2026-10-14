@@ -64,6 +64,8 @@ La página pública se actualiza al guardar. Otras sesiones se refrescan al volv
 - Respaldo de certificados: `src/data/certificates.ts`.
 - Tipos: `src/types/`.
 
+Tech Stack usa una grilla de seis categorías (1 columna en móvil, 2 en tablet y 3 en escritorio), con chips de Simple Icons de `react-icons`, alturas según el contenido y una etiqueta de aprendizaje para IA. Los niveles por herramienta se eliminaron. Embla sigue instalado para el carrusel de certificados.
+
 El portafolio contiene **6 proyectos**, con **X-Mate como primer destacado**, y los **10 PDFs** de cursos. X-Mate incluye el sello de EAG Global Buildathon 2026 y un placeholder de teléfono; añade la captura en `public/images/xmate.png` y activa la ruta comentada en sus datos. El proyecto Chatbot tiene el stack corregido conforme a [su README público](https://github.com/juanjosbg/Chatbot-app); falta una demo pública confirmada.
 
 Los repositorios de Loki-Ecommerce, Gp3App y CIMELCO son privados y sus tarjetas lo indican sin publicar enlaces de GitHub. Sus demos públicas son https://thelokistore.com/, https://gp3-app.vercel.app/ y https://www.cimelco.net/. Si publicas un repositorio, actualiza su URL y cambia `repositoryStatus` a `public`.

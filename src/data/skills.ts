@@ -1,164 +1,151 @@
 import type { Language } from "../types/certificate";
 import type { SkillCategory } from "../types/skills";
-export const getSkillCategories = (language: Language): SkillCategory[] =>
-  language === "es"
-    ? [
-        {
-          title: "IA",
-          skills: [
-            { name: "OpenAI API", level: "intermediate" },
-            { name: "Claude API", level: "intermediate" },
-            { name: "Function calling", level: "intermediate" },
-            { name: "Agentes de IA", level: "intermediate" },
-            { name: "Hugging Face", level: "intermediate" },
-            { name: "n8n", level: "advanced" },
-          ],
-        },
-        {
-          title: "Frontend",
-          skills: [
-            { name: "HTML5", level: "advanced" },
-            { name: "JavaScript (ES6+)", level: "advanced" },
-            { name: "TypeScript", level: "advanced" },
-            { name: "React", level: "advanced" },
-            { name: "Next.js", level: "advanced" },
-            { name: "React Native", level: "intermediate" },
-          ],
-        },
-        {
-          title: "UI & Styling (UI Frameworks)",
-          skills: [
-            { name: "Material UI (MUI)", level: "advanced" },
-            { name: "TailwindCSS", level: "advanced" },
-            { name: "Bootstrap", level: "advanced" },
-            { name: "Chakra UI", level: "advanced" },
-            { name: "SCSS / Sass", level: "advanced" },
-            { name: "CSS3", level: "advanced" },
-          ],
-        },
-        {
-          title: "Backend & CMS",
-          skills: [
-            {
-              name: "WordPress (temas y plugins personalizados)",
-              level: "advanced",
-            },
-            { name: "Node.js", level: "intermediate" },
-            { name: "Strapi", level: "intermediate" },
-            { name: "Firebase", level: "intermediate" },
-            { name: "SQL / MySQL", level: "intermediate" },
-          ],
-        },
-        {
-          title: "Analítica, SEO y SEM",
-          skills: [
-            { name: "Google Analytics 4 (GA4)", level: "advanced" },
-            { name: "Google Tag Manager (GTM)", level: "advanced" },
-            { name: "Google Search Console (GSC)", level: "advanced" },
-            { name: "SEO técnico", level: "advanced" },
-            { name: "SEM", level: "advanced" },
-            { name: "CRO", level: "advanced" },
-            { name: "Core Web Vitals", level: "advanced" },
-            { name: "Core Web Vitals / Performance", level: "advanced" },
-          ],
-        },
-        {
-          title: "Automatización y APIs",
-          skills: [
-            { name: "n8n", level: "advanced" },
-            { name: "Zapier", level: "advanced" },
-            { name: "API Integration", level: "advanced" },
-            { name: "Formularios dinámicos", level: "advanced" },
-            { name: "Automatización de procesos web", level: "advanced" },
-          ],
-        },
-        {
-          title: "Dev Tools e Infraestructura",
-          skills: [
-            { name: "Git / GitHub", level: "advanced" },
-            { name: "npm", level: "advanced" },
-            { name: "Yarn", level: "advanced" },
-            { name: "AWS", level: "intermediate" },
-            { name: "Figma", level: "advanced" },
-          ],
-        },
-      ]
-    : [
-        {
-          title: "AI",
-          skills: [
-            { name: "OpenAI API", level: "intermediate" },
-            { name: "Claude API", level: "intermediate" },
-            { name: "Function calling", level: "intermediate" },
-            { name: "AI agents", level: "intermediate" },
-            { name: "Hugging Face", level: "intermediate" },
-            { name: "n8n", level: "advanced" },
-          ],
-        },
-        {
-          title: "Frontend",
-          skills: [
-            { name: "React", level: "advanced" },
-            { name: "Next.js", level: "advanced" },
-            { name: "TypeScript", level: "advanced" },
-            { name: "JavaScript (ES6+)", level: "advanced" },
-            { name: "React Native", level: "intermediate" },
-            { name: "HTML5", level: "advanced" },
-            { name: "CSS3", level: "advanced" },
-          ],
-        },
-        {
-          title: "Libraries and Styling",
-          skills: [
-            { name: "TailwindCSS", level: "advanced" },
-            { name: "Bootstrap", level: "advanced" },
-            { name: "SCSS", level: "advanced" },
-          ],
-        },
-        {
-          title: "Backend",
-          skills: [
-            {
-              name: "WordPress (custom themes and plugins)",
-              level: "advanced",
-            },
-            { name: "Node.js", level: "intermediate" },
-            { name: "Strapi", level: "intermediate" },
-            { name: "Firebase", level: "intermediate" },
-            { name: "SQL / MySQL", level: "intermediate" },
-          ],
-        },
-        {
-          title: "Analytics, SEO and SEM",
-          skills: [
-            { name: "Google Analytics 4 (GA4)", level: "advanced" },
-            { name: "Google Tag Manager (GTM)", level: "advanced" },
-            { name: "Google Search Console (GSC)", level: "advanced" },
-            { name: "Technical SEO", level: "advanced" },
-            { name: "SEM", level: "advanced" },
-            { name: "CRO", level: "advanced" },
-            { name: "Core Web Vitals", level: "advanced" },
-            { name: "Performance Optimization", level: "advanced" },
-          ],
-        },
-        {
-          title: "Automation and APIs",
-          skills: [
-            { name: "n8n", level: "advanced" },
-            { name: "Zapier", level: "advanced" },
-            { name: "API Integration", level: "advanced" },
-            { name: "Dynamic forms", level: "advanced" },
-            { name: "Web process automation", level: "advanced" },
-          ],
-        },
-        {
-          title: "Dev Tools and Infrastructure",
-          skills: [
-            { name: "Git / GitHub", level: "advanced" },
-            { name: "npm", level: "advanced" },
-            { name: "Yarn", level: "advanced" },
-            { name: "AWS", level: "intermediate" },
-            { name: "Figma", level: "advanced" },
-          ],
-        },
-      ];
+
+export const getSkillCategories = (language: Language): SkillCategory[] => {
+  const text =
+    language === "es"
+      ? {
+          frontend: "Frontend",
+          frontendDescription: "Mi stack principal para construir interfaces",
+          automation: "Automatización",
+          automationDescription:
+            "Flujos que conectan apps y ahorran trabajo manual",
+          backend: "Backend y datos",
+          backendDescription: "APIs, bases de datos y servicios en la nube",
+          ai: "IA",
+          aiDescription: "Integrando agentes de IA en mis proyectos",
+          agents: "Agentes de IA",
+          marketing: "Marketing y analítica",
+          marketingDescription: "Medición y SEO para productos que crecen",
+          seo: "SEO técnico",
+          performance: "Core Web Vitals y rendimiento",
+          tools: "Herramientas",
+          toolsDescription: "Lo que uso todos los días",
+          integrations: "Integración de APIs",
+          restApis: "APIs REST",
+          forms: "Formularios dinámicos",
+          processes: "Automatización web",
+          wordpress: "WordPress: temas y plugins personalizados",
+        }
+      : {
+          frontend: "Frontend",
+          frontendDescription: "My main stack for building interfaces",
+          automation: "Automation",
+          automationDescription:
+            "Workflows that connect apps and save manual work",
+          backend: "Backend and data",
+          backendDescription: "APIs, databases, and cloud services",
+          ai: "AI",
+          aiDescription: "Integrating AI agents into my projects",
+          agents: "AI agents",
+          marketing: "Marketing and analytics",
+          marketingDescription: "Measurement and SEO for growing products",
+          seo: "Technical SEO",
+          performance: "Core Web Vitals and performance",
+          tools: "Tools",
+          toolsDescription: "What I use every day",
+          integrations: "API integration",
+          restApis: "REST APIs",
+          forms: "Dynamic forms",
+          processes: "Web process automation",
+          wordpress: "WordPress: custom themes and plugins",
+        };
+  return [
+    {
+      id: "frontend",
+      title: text.frontend,
+      description: text.frontendDescription,
+      primary: true,
+      skills: [
+        { name: "React", logo: "react" },
+        { name: "TypeScript", logo: "typescript" },
+        { name: "JavaScript", logo: "javascript" },
+        { name: "Next.js", logo: "nextjs" },
+        { name: "React Native", logo: "react" },
+        { name: "Tailwind CSS", logo: "tailwind" },
+        { name: "HTML5", logo: "html" },
+        { name: "CSS3", logo: "css" },
+        // Preserve the styling tools from the previous categories in both languages.
+        { name: "Material UI", logo: "mui" },
+        { name: "Bootstrap", logo: "bootstrap" },
+        { name: "Chakra UI", logo: "chakra" },
+        { name: "SCSS / Sass", logo: "sass" },
+      ],
+    },
+    {
+      id: "automation",
+      title: text.automation,
+      description: text.automationDescription,
+      primary: true,
+      skills: [
+        { name: "n8n", logo: "n8n" },
+        { name: "Zapier", logo: "zapier" },
+        { name: "Webhooks" },
+        { name: text.restApis },
+        { name: "WhatsApp Cloud API", logo: "whatsapp" },
+        { name: text.integrations },
+        { name: text.forms },
+        { name: text.processes },
+      ],
+    },
+    {
+      id: "backend",
+      title: text.backend,
+      description: text.backendDescription,
+      skills: [
+        { name: "Node.js", logo: "node" },
+        { name: "Express", logo: "express" },
+        { name: "Supabase", logo: "supabase" },
+        { name: "PostgreSQL", logo: "postgresql" },
+        { name: "Firebase", logo: "firebase" },
+        { name: "AWS" },
+        { name: "SQL" },
+        { name: "MySQL", logo: "mysql" },
+      ],
+    },
+    {
+      id: "ai",
+      title: text.ai,
+      description: text.aiDescription,
+      learning: true,
+      skills: [
+        { name: "OpenAI API" },
+        { name: "Claude API", logo: "claude" },
+        { name: "Function calling" },
+        { name: text.agents },
+        { name: "Hugging Face", logo: "huggingface" },
+      ],
+    },
+    {
+      id: "marketing",
+      title: text.marketing,
+      description: text.marketingDescription,
+      skills: [
+        { name: "GA4", logo: "analytics" },
+        { name: "Google Tag Manager", logo: "gtm" },
+        { name: "Search Console", logo: "searchconsole" },
+        { name: text.seo },
+        { name: "SEM" },
+        { name: "CRO" },
+        { name: text.performance },
+      ],
+    },
+    {
+      id: "tools",
+      title: text.tools,
+      description: text.toolsDescription,
+      skills: [
+        { name: "Git", logo: "git" },
+        { name: "GitHub", logo: "github" },
+        { name: "Vercel", logo: "vercel" },
+        { name: "Figma", logo: "figma" },
+        { name: "Postman", logo: "postman" },
+        { name: "Strapi", logo: "strapi" },
+        { name: "WordPress", logo: "wordpress", detail: text.wordpress },
+        { name: "Shopify", logo: "shopify" },
+        { name: "npm", logo: "npm" },
+        { name: "Yarn", logo: "yarn" },
+      ],
+    },
+  ];
+};

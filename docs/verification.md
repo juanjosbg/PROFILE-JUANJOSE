@@ -8,6 +8,8 @@ Prueba pública: home, persistencia del idioma, 11 certificados del respaldo, fi
 
 La integración de X-Mate se comprobó a **375 y 1440 px**, en **claro y oscuro**, y en **español e inglés**: primer destacado, placeholder del teléfono, sello de EAG, descripción desplegable, orientación conservada de los proyectos anteriores, tarjeta horizontal de la hackathon, controles del carrusel y descarga de los dos CV. La imagen EAG aún está pendiente; se revisó su estado sin archivo.
 
+La grilla Tech Stack se comprobó a **375, 768 y 1440 px**, en ambos temas e idiomas: seis categorías visibles, orden Frontend → Automatización → Backend → IA → Marketing → Herramientas, logos con nombre accesible, contraste AA de los textos, foco visible en los chips, hover sin cambios de posición y respeto por movimiento reducido. No hay carrusel ni niveles por herramienta; las tarjetas principales ganan altura con su contenido y las demás mantienen su altura natural. Las herramientas anteriores se conservaron al reagruparlas.
+
 Prueba del panel con API Supabase simulada: envío de magic link sin crear usuarios, sesión del propietario, listado, miniatura de un PDF local real, carga de documento y miniatura, creación, edición, destacado, borrado y limpieza de Storage. También comprueba que otra cuenta no pueda abrir el editor, el respaldo público ante un error y la colección vacía sin sustituirla por datos de ejemplo.
 
 Estas pruebas no demuestran el comportamiento de Auth, Storage o RLS en un proyecto Supabase real. La migración aún debe aplicarse y probarse con sesiones de propietario, otro usuario y visitante anónimo.
@@ -27,6 +29,7 @@ Necesitas Chrome y Node.js 22 o superior. Usa un perfil de Chrome exclusivo para
 
 - `npm run qa:browser`: espera un build sin variables Supabase. Genera una captura local `.qa-certifications.png`.
 - `npm run qa:admin`: espera un build con `VITE_SUPABASE_URL=https://example.supabase.co` y `VITE_SUPABASE_ANON_KEY=example-anon-key`. Intercepta las peticiones a ese host y usa sesiones ficticias; no escribe en un backend real.
+- `npm run qa:skills`: comprueba las 12 combinaciones de tamaños, temas e idiomas de Tech Stack y genera capturas locales `.qa-skills-*.png`. Usa el mismo preview y Chrome aislado indicados arriba.
 
 Después de la prueba admin, reconstruye con tu configuración normal. Cierra la sesión de Chrome y el servidor de preview que abriste.
 
