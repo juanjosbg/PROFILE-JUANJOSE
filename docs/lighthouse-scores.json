@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-14",
+  "environment": "Local production preview; Supabase not configured; mobile Lighthouse",
+  "pages": [
+    {
+      "url": "http://127.0.0.1:4173/",
+      "lighthouseVersion": "13.5.0",
+      "scores": {
+        "performance": 97,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      }
+    },
+    {
+      "url": "http://127.0.0.1:4173/certifications",
+      "lighthouseVersion": "13.5.0",
+      "scores": {
+        "performance": 97,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      }
+    }
+  ]
+}

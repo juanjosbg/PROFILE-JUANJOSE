@@ -7,7 +7,7 @@ import Projects from '@/components/Projects';
 import Experience from '@/components/Experience';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
-import Certifications from '@/components/Certifications';
+import RecentAchievements from '@/components/RecentAchievements';
 
 interface IndexProps {
   language?: 'es' | 'en';
@@ -22,13 +22,13 @@ const Index = ({ language: controlledLanguage, onLanguageChange }: IndexProps) =
   return (
     <div className="min-h-screen bg-background">
       <Navbar language={language} onLanguageChange={handleLanguageChange} />
-      <main>
+      <main id="main-content">
         <Hero language={language} />
         <About language={language} />
         <Skills language={language} />
         <Projects language={language} />
         <Experience language={language} />
-        <Certifications language={language} recent />
+        <RecentAchievements language={language} />
         <Contact language={language} />
       </main>
       <Footer language={language} />

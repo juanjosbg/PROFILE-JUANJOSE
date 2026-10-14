@@ -11,23 +11,24 @@ const Hero = ({ language }: HeroProps) => {
   const text =
     language === 'es'
       ? {
-          title: 'React + Inteligencia Artificial',
-          subtitle:
-            'REACT · TYPESCRIPT · AGENTES DE IA · AUTOMATIZACIÓN',
+          title: 'React - N8N - IA',
+          subtitle: 'Creo apps con React, automatizo con n8n y sumo agentes de IA.',
           description:
             'Soy Juan José Borrero. Construyo aplicaciones con React y TypeScript e integro inteligencia artificial para conectar herramientas, automatizar procesos y crear experiencias útiles.',
           viewProjects: 'Ver proyectos',
           contact: 'Contactar',
           cv: 'Descargar CV',
+          cvPending: 'CV pendiente',
         }
       : {
-          title: 'React + Artificial Intelligence',
-          subtitle: 'REACT · TYPESCRIPT · AI AGENTS · AUTOMATION',
+          title: 'React - N8N - IA',
+          subtitle: 'Web apps with React, n8n automation, and AI agents.',
           description:
             'I am Juan José Borrero. I build applications with React and TypeScript and integrate artificial intelligence to connect tools, automate processes and create useful experiences.',
           viewProjects: 'View projects',
           contact: 'Contact',
           cv: 'Download CV',
+          cvPending: 'CV coming soon',
         };
 
   return (
@@ -68,7 +69,7 @@ const Hero = ({ language }: HeroProps) => {
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight mb-4"
@@ -86,7 +87,7 @@ const Hero = ({ language }: HeroProps) => {
           </motion.h2>
 
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-muted-foreground max-w-2xl mb-10 text-lg leading-relaxed text-balance"
@@ -136,7 +137,7 @@ const Hero = ({ language }: HeroProps) => {
             <a href="#contact" className="btn-secondary">
               {text.contact}
             </a>
-            <a href="/cv-juan-jose-borrero.pdf" download className="btn-secondary">{text.cv}</a>
+            <a href="/cv-juan-jose-borrero.pdf" download className="btn-secondary" aria-disabled={!import.meta.env.VITE_CV_AVAILABLE} onClick={e=>{if(!import.meta.env.VITE_CV_AVAILABLE)e.preventDefault();}} title={!import.meta.env.VITE_CV_AVAILABLE?text.cvPending:undefined}>{import.meta.env.VITE_CV_AVAILABLE?text.cv:text.cvPending}</a>
           </motion.div>
 
           <motion.div

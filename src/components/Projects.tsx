@@ -1,66 +1,83 @@
-import { projects } from '@/data/projects';
-import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
-import { ExternalLink, Github } from 'lucide-react';
+import { projects } from "@/data/projects";
+import { motion, useInView } from "framer-motion";
+import { useRef, useState } from "react";
+import { ExternalLink, Github } from "lucide-react";
 
-type Language = 'es' | 'en';
+type Language = "es" | "en";
 
 interface ProjectsProps {
   language: Language;
 }
 
-
-
 const PhoneMockup = ({ image, title }: { image: string; title: string }) => {
   const [failed, setFailed] = useState(false);
   return (
-  <div className="phone-mockup w-48 md:w-56 mx-auto">
-    <div className="phone-mockup-screen">
-      {image && !failed ? <img src={image} alt={`Screenshot · ${title}`} loading="lazy" decoding="async" width={224} height={460} onError={() => setFailed(true)} className="w-full h-full object-cover" /> : <div className="w-full h-full min-h-96 bg-gradient-to-br from-primary/20 via-muted to-background flex items-center justify-center p-6 text-center font-display text-xl">{title}</div>}
+    <div className="phone-mockup w-48 md:w-56 mx-auto">
+      <div className="phone-mockup-screen">
+        {image && !failed ? (
+          <img
+            src={image}
+            alt={`Screenshot · ${title}`}
+            loading="lazy"
+            decoding="async"
+            width={224}
+            height={460}
+            onError={() => setFailed(true)}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <div className="w-full h-full min-h-96 bg-gradient-to-br from-primary/20 via-muted to-background flex items-center justify-center p-6 text-center font-display text-xl">
+            {title}
+          </div>
+        )}
+      </div>
     </div>
-  </div>
-);
+  );
 };
 
 const Projects = ({ language }: ProjectsProps) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
-  const [expandedDescriptions, setExpandedDescriptions] = useState<Record<string, boolean>>({});
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [expandedDescriptions, setExpandedDescriptions] = useState<
+    Record<string, boolean>
+  >({});
   const descriptionLimit = 170;
-  const expandableProjects = new Set(['Gym Ecommerce Hub', 'Loki Ecommerce']);
+  const expandableProjects = new Set(["Gym Ecommerce Hub", "Loki Ecommerce"]);
 
   const text =
-    language === 'es'
+    language === "es"
       ? {
-          label: 'Portafolio',
-          title: 'Proyectos Destacados',
-          subtitle: 'Selección de proyectos reales en los que he trabajado',
-          otherProjects: 'Otros Proyectos',
-          readMore: 'Leer más',
-          readLess: 'Leer menos',
-          demo: 'Ver demo',
-          repo: 'Repositorio',
-          code: 'Código',
+          label: "Portafolio",
+          title: "Proyectos Destacados",
+          subtitle: "Selección de proyectos reales en los que he trabajado",
+          otherProjects: "Otros Proyectos",
+          readMore: "Leer más",
+          readLess: "Leer menos",
+          demo: "Ver demo",
+          repo: "Repositorio",
+          unavailable: "Enlace de código pendiente de actualización",
+          code: "Código",
           status: {
-            active: 'Activo',
-            progress: 'En desarrollo',
-            building: 'En construcción',
+            active: "Activo",
+            progress: "En desarrollo",
+            building: "En construcción",
           },
         }
       : {
-          label: 'Portfolio',
-          title: 'Featured Projects',
-          subtitle: 'A selection of real projects I have worked on',
-          otherProjects: 'Other Projects',
-          readMore: 'Read more',
-          readLess: 'Read less',
-          demo: 'View demo',
-          repo: 'Repository',
-          code: 'Code',
+          label: "Portfolio",
+          title: "Featured Projects",
+          subtitle: "A selection of real projects I have worked on",
+          otherProjects: "Other Projects",
+          readMore: "Read more",
+          readLess: "Read less",
+          demo: "View demo",
+          repo: "Repository",
+          unavailable: "Code link pending update",
+          code: "Code",
           status: {
-            active: 'Active',
-            progress: 'In progress',
-            building: 'Building',
+            active: "Active",
+            progress: "In progress",
+            building: "Building",
           },
         };
 
@@ -104,22 +121,31 @@ const Projects = ({ language }: ProjectsProps) => {
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 lg:gap-16 items-center`}
+              className={`flex flex-col ${index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} gap-8 lg:gap-16 items-center`}
             >
               <motion.div
                 className="flex-shrink-0"
                 animate={{ y: [0, -15, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: index * 0.5 }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: index * 0.5,
+                }}
               >
                 <PhoneMockup image={project.image} title={project.title} />
               </motion.div>
 
               <div className="flex-1 glass-card p-8 md:p-10">
                 <div className="flex items-center gap-3 mb-4">
-                  <h3 className="font-display font-bold text-2xl md:text-3xl">{project.title}</h3>
+                  <h3 className="font-display font-bold text-2xl md:text-3xl">
+                    {project.title}
+                  </h3>
                   <span
                     className={`badge-status ${
-                      project.status === 'active' ? 'badge-status-active' : 'badge-status-progress'
+                      project.status === "active"
+                        ? "badge-status-active"
+                        : "badge-status-progress"
                     }`}
                   >
                     {text.status[project.status]}
@@ -127,20 +153,26 @@ const Projects = ({ language }: ProjectsProps) => {
                 </div>
 
                 <p className="text-muted-foreground mb-2 leading-relaxed text-lg">
-                  {expandableProjects.has(project.title) && !expandedDescriptions[project.title]
+                  {expandableProjects.has(project.title) &&
+                  !expandedDescriptions[project.title]
                     ? getDescriptionPreview(project.description[language])
                     : project.description[language]}
                 </p>
-                {expandableProjects.has(project.title) && project.description[language].length > descriptionLimit && (
-                  <button
-                    type="button"
-                    onClick={() => toggleDescription(project.title)}
-                    className="text-sm font-medium text-primary hover:text-primary/80 transition-colors mb-6"
-                    aria-expanded={expandedDescriptions[project.title] ?? false}
-                  >
-                    {expandedDescriptions[project.title] ? text.readLess : text.readMore}
-                  </button>
-                )}
+                {expandableProjects.has(project.title) &&
+                  project.description[language].length > descriptionLimit && (
+                    <button
+                      type="button"
+                      onClick={() => toggleDescription(project.title)}
+                      className="text-sm font-medium text-primary hover:text-primary/80 transition-colors mb-6"
+                      aria-expanded={
+                        expandedDescriptions[project.title] ?? false
+                      }
+                    >
+                      {expandedDescriptions[project.title]
+                        ? text.readLess
+                        : text.readMore}
+                    </button>
+                  )}
 
                 <div className="flex flex-wrap gap-2 mb-8">
                   {project.tech.map((tech) => (
@@ -151,7 +183,7 @@ const Projects = ({ language }: ProjectsProps) => {
                 </div>
 
                 <div className="flex items-center gap-4">
-                  {project.liveUrl !== '#' && (
+                  {project.liveUrl && (
                     <a
                       href={project.liveUrl}
                       target="_blank"
@@ -162,15 +194,21 @@ const Projects = ({ language }: ProjectsProps) => {
                       {text.demo}
                     </a>
                   )}
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-secondary text-sm"
-                  >
-                    <Github size={16} />
-                    {text.repo}
-                  </a>
+                  {project.repositoryStatus === "pending" ? (
+                    <span className="text-sm text-muted-foreground">
+                      {text.unavailable}
+                    </span>
+                  ) : (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-secondary text-sm"
+                    >
+                      <Github size={16} />
+                      {text.repo}
+                    </a>
+                  )}
                 </div>
               </div>
             </motion.div>
@@ -182,7 +220,9 @@ const Projects = ({ language }: ProjectsProps) => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
         >
-          <h3 className="font-display font-semibold text-xl mb-8 text-center">{text.otherProjects}</h3>
+          <h3 className="font-display font-semibold text-xl mb-8 text-center">
+            {text.otherProjects}
+          </h3>
           <div className="grid md:grid-cols-2 gap-6">
             {otherProjects.map((project, index) => (
               <motion.div
@@ -193,10 +233,14 @@ const Projects = ({ language }: ProjectsProps) => {
                 className="project-card p-6"
               >
                 <div className="flex items-start justify-between mb-4">
-                  <h4 className="font-display font-semibold text-lg">{project.title}</h4>
+                  <h4 className="font-display font-semibold text-lg">
+                    {project.title}
+                  </h4>
                   <span
                     className={`badge-status ${
-                      project.status === 'active' ? 'badge-status-active' : 'badge-status-progress'
+                      project.status === "active"
+                        ? "badge-status-active"
+                        : "badge-status-progress"
                     }`}
                   >
                     {text.status[project.status]}
@@ -207,13 +251,16 @@ const Projects = ({ language }: ProjectsProps) => {
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tech.map((tech) => (
-                    <span key={tech} className="text-xs px-2 py-1 rounded-lg bg-muted text-muted-foreground">
+                    <span
+                      key={tech}
+                      className="text-xs px-2 py-1 rounded-lg bg-muted text-muted-foreground"
+                    >
                       {tech}
                     </span>
                   ))}
                 </div>
                 <div className="flex items-center gap-3">
-                  {project.liveUrl !== '#' && (
+                  {project.liveUrl && (
                     <a
                       href={project.liveUrl}
                       target="_blank"
@@ -224,15 +271,21 @@ const Projects = ({ language }: ProjectsProps) => {
                       Demo
                     </a>
                   )}
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"
-                  >
-                    <Github size={14} />
-                    {text.code}
-                  </a>
+                  {project.repositoryStatus === "pending" ? (
+                    <span className="text-sm text-muted-foreground">
+                      {text.unavailable}
+                    </span>
+                  ) : (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"
+                    >
+                      <Github size={14} />
+                      {text.code}
+                    </a>
+                  )}
                 </div>
               </motion.div>
             ))}
@@ -244,5 +297,3 @@ const Projects = ({ language }: ProjectsProps) => {
 };
 
 export default Projects;
-
-

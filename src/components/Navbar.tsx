@@ -13,7 +13,7 @@ interface NavbarProps {
 const Navbar = ({ language, onLanguageChange }: NavbarProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(() => document.documentElement.classList.contains('dark'));
   const location = useLocation();
 
   const isHome = location.pathname === '/';
@@ -40,17 +40,17 @@ const Navbar = ({ language, onLanguageChange }: NavbarProps) => {
         ];
 
   useEffect(() => {
-    document.documentElement.classList.add('dark');
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const toggleTheme = () => {
     setIsDark(!isDark);
     document.documentElement.classList.toggle('dark');
+    try { localStorage.setItem('portfolio-theme', !isDark ? 'dark' : 'light'); } catch { /* Optional persistence. */ }
   };
 
   return (
@@ -98,7 +98,7 @@ const Navbar = ({ language, onLanguageChange }: NavbarProps) => {
             <button
               onClick={() => onLanguageChange(language === 'es' ? 'en' : 'es')}
               className="h-10 px-3 rounded-xl bg-muted flex items-center justify-center hover:bg-muted/80 transition-colors text-sm font-semibold"
-              aria-label={language === 'es' ? 'Cambiar a inglés' : 'Switch to Spanish'}
+              aria-label={language === 'es' ? 'ES: Cambiar a inglés' : 'EN: Switch to Spanish'}
             >
               {language === 'es' ? 'ES' : 'EN'}
             </button>

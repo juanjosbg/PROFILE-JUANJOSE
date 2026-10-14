@@ -64,7 +64,7 @@ const Contact = ({ language }: ContactProps) => {
               </div>
               <h3 className="font-display font-bold text-2xl md:text-3xl mb-4">{text.ctaTitle}</h3>
               <p className="text-muted-foreground max-w-md mx-auto mb-8">{text.ctaBody}</p>
-              <a href="mailto:juanjoseborrero95@gmail.com" className="btn-primary text-lg">
+              <a href="mailto:juanjoseborrero95@gmail.com" aria-label={language === 'es' ? 'Enviar email' : 'Send email'} className="btn-primary text-lg">
                 <Mail size={20} />
                 {text.sendEmail}
               </a>
@@ -115,7 +115,7 @@ const Contact = ({ language }: ContactProps) => {
                 <Linkedin size={20} />
               </a>
               <a
-                href="mailto:juanjoseborrero95@gmail.com"
+                href="mailto:juanjoseborrero95@gmail.com" aria-label={language === 'es' ? 'Enviar email' : 'Send email'}
                 className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300"
               >
                 <Send size={20} />

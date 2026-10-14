@@ -11,6 +11,8 @@ node_modules
 .env
 .env.*
 !.env.example
+.lighthouse-*.json
+.qa-*.png
 dist
 dist-ssr
 *.local

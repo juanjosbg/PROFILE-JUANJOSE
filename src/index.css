@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,6 +7,13 @@
 }
 *:focus-visible { outline: 2px solid hsl(var(--primary)); outline-offset: 4px; }
 button:disabled { opacity: .6; cursor: wait; }
+.skip-link { position: fixed; top: 1rem; left: 1rem; z-index: 100; transform: translateY(-200%); padding: .75rem 1rem; background: hsl(var(--background)); color: hsl(var(--foreground)); border: 2px solid hsl(var(--primary)); border-radius: .5rem; }
+.skip-link:focus { transform: translateY(0); }
+section[id] { scroll-margin-top: 5rem; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
 
 @layer base {
   :root {
@@ -21,7 +26,7 @@ button:disabled { opacity: .6; cursor: wait; }
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 9%;
 
-    --primary: 212 90% 52%;
+    --primary: 212 85% 38%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 0 0% 96%;
@@ -43,7 +48,7 @@ button:disabled { opacity: .6; cursor: wait; }
     --radius: 0.75rem;
 
     /* Premium tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(212 90% 52%) 0%, hsl(215 85% 42%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(212 85% 38%) 0%, hsl(215 85% 42%) 100%);
     --gradient-hero: linear-gradient(180deg, hsl(0 0% 98%) 0%, hsl(0 0% 95%) 100%);
     --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(0 0% 98%) 100%);
     --shadow-subtle: 0 1px 3px hsl(0 0% 100% / 0.03), 0 4px 12px hsl(0 0% 100% / 0.04);
@@ -62,14 +67,14 @@ button:disabled { opacity: .6; cursor: wait; }
     --popover: 0 0% 7%;
     --popover-foreground: 0 0% 95%;
 
-    --primary: 212 90% 55%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 212 90% 65%;
+    --primary-foreground: 0 0% 4%;
 
     --secondary: 0 0% 10%;
     --secondary-foreground: 0 0% 95%;
 
     --muted: 0 0% 12%;
-    --muted-foreground: 0 0% 55%;
+    --muted-foreground: 0 0% 65%;
 
     --accent: 0 0% 12%;
     --accent-foreground: 0 0% 95%;
@@ -82,7 +87,7 @@ button:disabled { opacity: .6; cursor: wait; }
     --ring: 212 90% 55%;
 
     /* Premium tokens dark */
-    --gradient-primary: linear-gradient(135deg, hsl(212 90% 55%) 0%, hsl(215 85% 45%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(212 90% 65%) 0%, hsl(215 85% 65%) 100%);
     --gradient-hero: linear-gradient(180deg, hsl(0 0% 4%) 0%, hsl(0 0% 6%) 100%);
     --gradient-subtle: linear-gradient(180deg, hsl(0 0% 7%) 0%, hsl(0 0% 5%) 100%);
     --shadow-subtle: 0 1px 3px hsl(0 0% 100% / 0.05), 0 4px 12px hsl(0 0% 100% / 0.06);

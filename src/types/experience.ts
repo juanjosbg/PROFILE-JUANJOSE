@@ -1,4 +1,4 @@
-import type { Language } from './certificate';
+import type { Language } from "./certificate";
 export type ExperienceItem = {
   title: Record<Language, string>;
   company: string;

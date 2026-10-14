@@ -19,7 +19,7 @@ const CertificationsPage = ({
   return (
     <div className="min-h-screen bg-background">
       <Navbar language={language} onLanguageChange={handleLanguageChange} />
-      <main className="pt-20">
+      <main id="main-content" className="pt-20">
         <Certifications language={language} />
       </main>
       <Footer language={language} />
