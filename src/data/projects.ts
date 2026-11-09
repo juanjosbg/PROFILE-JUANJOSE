@@ -63,7 +63,7 @@ export const projects: Project[] = [
     },
     tech: ["React", "TypeScript", "Supabase", "n8n"],
     image: "/images/Fitmex.png",
-    liveUrl: "https://gym-ecommerce-hub.vercel.app/",
+    liveUrl: "https://fitmexstore.netlify.app/",
     githubUrl: "https://github.com/juanjosbg/gymEcommerce-hub",
     status: "active",
     featured: true,
