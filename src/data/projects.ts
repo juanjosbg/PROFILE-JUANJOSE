@@ -18,7 +18,7 @@ export const projects: Project[] = [
       "Foundry",
     ],
     image: "/images/xmate.png",
-    liveUrl: null,
+    liveUrl: "https://x-mate-stablecoin-payments-landing.vercel.app/",
     githubUrl: "https://github.com/EmanuelDesarrollo/ethereum-app-transaction",
     repositoryStatus: "public",
     status: "active",
