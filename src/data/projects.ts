@@ -1,10 +1,10 @@
 import type { Project } from "../types/projects";
 export const projects: Project[] = [
   {
-    title: "X-Mate",
+    title: "X-Mate · Pagos digitales con Web3 (Hackathon)",
     description: {
-      es: 'App móvil de cobros con stablecoins y un agente de IA. El comercio cobra escribiendo o hablando en lenguaje natural ("cóbrale 15 dólares a Ana por la camisa azul"), el agente crea el cobro con function calling y genera un QR, y el cliente paga desde su propia wallet no custodial. Un listener detecta el pago en la blockchain y lo registra en un smart contract. Construida y entregada en 48 horas en la EAG Global Buildathon 2026.',
-      en: 'Mobile payments app powered by stablecoins and an AI agent. Merchants charge by typing or speaking in natural language ("charge Ana 15 dollars for the blue shirt"), the agent creates the charge through function calling and generates a QR code, and the customer pays from their own non-custodial wallet. An on-chain listener detects the payment and records it in a smart contract. Built and shipped in 48 hours at the EAG Global Buildathon 2026.',
+      es: 'App móvil de cobros con stablecoins y un agente de IA. El comercio cobra escribiendo o hablando en lenguaje natural ("cóbrale 15 dólares a Ana por la camisa azul"), el agente crea el cobro con function calling y genera un QR, y el cliente paga desde su propia wallet no custodial. Un listener detecta el pago en la blockchain y lo registra en un smart contract. Construida y entregada en 48 horas en la EAG Global Buildathon 2026. Incluye una landing pública que explica el flujo de cobro, pago y verificación en la blockchain.',
+      en: 'Mobile payments app powered by stablecoins and an AI agent. Merchants charge by typing or speaking in natural language ("charge Ana 15 dollars for the blue shirt"), the agent creates the charge through function calling and generates a QR code, and the customer pays from their own non-custodial wallet. An on-chain listener detects the payment and records it in a smart contract. Built and shipped in 48 hours at the EAG Global Buildathon 2026. Includes a public landing page that walks through the charge, payment, and on-chain verification flow.',
     },
     tech: [
       "React Native",
@@ -17,7 +17,7 @@ export const projects: Project[] = [
       "Solidity",
       "Foundry",
     ],
-    image: "", // Set to "/images/xmate.png" when the app screenshot is available.
+    image: "/images/xmate.png",
     liveUrl: null,
     githubUrl: "https://github.com/EmanuelDesarrollo/ethereum-app-transaction",
     repositoryStatus: "public",

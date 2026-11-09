@@ -44,7 +44,7 @@ const Projects = ({ language }: ProjectsProps) => {
   >({});
   const descriptionLimit = 170;
   const expandableProjects = new Set([
-    "X-Mate",
+    "X-Mate · Pagos digitales con Web3 (Hackathon)",
     "Gym Ecommerce Hub",
     "Loki Ecommerce",
   ]);
@@ -129,7 +129,7 @@ const Projects = ({ language }: ProjectsProps) => {
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              className={`flex flex-col ${Math.max(0, index - Number(featuredProjects[0]?.title === "X-Mate")) % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} gap-8 lg:gap-16 items-center`}
+              className={`flex flex-col ${Math.max(0, index - Number(featuredProjects[0]?.title === "X-Mate · Pagos digitales con Web3 (Hackathon)")) % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} gap-8 lg:gap-16 items-center`}
             >
               <motion.div
                 className="flex-shrink-0"
