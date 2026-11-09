@@ -61,6 +61,7 @@ const Projects = ({ language }: ProjectsProps) => {
           demo: "Ver demo",
           repo: "Repositorio",
           unavailable: "Repositorio privado",
+          confidential: "Proyecto confidencial bajo contrato",
           code: "Código",
           status: {
             active: "Activo",
@@ -78,6 +79,7 @@ const Projects = ({ language }: ProjectsProps) => {
           demo: "View demo",
           repo: "Repository",
           unavailable: "Private repository",
+          confidential: "Confidential client project",
           code: "Code",
           status: {
             active: "Active",
@@ -213,7 +215,7 @@ const Projects = ({ language }: ProjectsProps) => {
                     <span className="text-sm text-muted-foreground">
                       {text.unavailable}
                     </span>
-                  ) : (
+                  ) : project.githubUrl ? (
                     <a
                       href={project.githubUrl}
                       target="_blank"
@@ -223,7 +225,7 @@ const Projects = ({ language }: ProjectsProps) => {
                       <Github size={16} />
                       {text.repo}
                     </a>
-                  )}
+                  ) : null}
                 </div>
               </div>
             </motion.div>
@@ -258,7 +260,9 @@ const Projects = ({ language }: ProjectsProps) => {
                         : "badge-status-progress"
                     }`}
                   >
-                    {text.status[project.status]}
+                    {!project.liveUrl && !project.githubUrl && project.repositoryStatus === "private" && project.status === "building"
+                      ? text.status.progress
+                      : text.status[project.status]}
                   </span>
                 </div>
                 <p className="text-muted-foreground text-sm mb-2 leading-relaxed">
@@ -290,7 +294,7 @@ const Projects = ({ language }: ProjectsProps) => {
                     <span className="text-sm text-muted-foreground">
                       {text.unavailable}
                     </span>
-                  ) : (
+                  ) : project.githubUrl ? (
                     <a
                       href={project.githubUrl}
                       target="_blank"
@@ -300,8 +304,13 @@ const Projects = ({ language }: ProjectsProps) => {
                       <Github size={14} />
                       {text.code}
                     </a>
-                  )}
+                  ) : null}
                 </div>
+                {!project.liveUrl && !project.githubUrl && project.repositoryStatus === "private" && (
+                  <p className="mt-2 text-xs text-muted-foreground">
+                    {text.confidential}
+                  </p>
+                )}
               </motion.div>
             ))}
           </div>

@@ -36,7 +36,7 @@ export const projects: Project[] = [
       en: "App developed for a fitness competition it is currently taking part in. It offers personalized training, nutrition, and wellness through two experiences, My Gym/Sis and Gym Bro, with tailored calorie goals and workout routines that include illustrations for each exercise.",
     },
     tech: ["React", "TypeScript", "Vite", "Supabase", "Tailwind CSS", "IA", "Vercel"],
-    image: "", // Set to "/images/gym-bot.png" when the app screenshot is available.
+    image: "/images/gym-bot.png",
     liveUrl: "https://my-gym-sis-bro-agent.vercel.app/login",
     githubUrl: "https://github.com/marimarketingdigitalw3/My-gym-Sis-Bro-Agent",
     repositoryStatus: "public",
@@ -76,7 +76,7 @@ export const projects: Project[] = [
       en: "Internal platform for Clínica Colombia with employee, user, and permission management, a Humanization module, and Education, ATENEA, and Onboarding modules. It combines a React/Vite frontend and a Node.js API with data distributed between Supabase and Neon on PostgreSQL.",
     },
     tech: ["React", "Vite", "TypeScript", "Node.js", "PostgreSQL", "Supabase", "Neon", "Vercel"],
-    image: "", // Set to "/images/clinica-colombia.png" when the app screenshot is available.
+    image: "/images/clinica-colombia.png", // Captured from the local production build.
     liveUrl: "https://www.clinicacolombiaes.com/",
     githubUrl: "https://github.com/juanjosbg/ClinicaColombiaEs",
     repositoryStatus: "private",
@@ -113,7 +113,7 @@ export const projects: Project[] = [
       "n8n",
     ],
     image: "/images/Gp3.png",
-    liveUrl: null, // TODO: restore the demo URL when the site is republished.
+    liveUrl: "https://gp3-app.vercel.app/",
     githubUrl: "https://github.com/Gp3Marketing/Gp3App",
     repositoryStatus: "private",
     status: "active",
@@ -126,12 +126,26 @@ export const projects: Project[] = [
       en: "Institutional website for Clínica Cali patients and families, with information on medical services, specialists, and patient guidance. It includes access to the results portal, contact and community participation channels, plus a Supabase-backed panel for managing job openings.",
     },
     tech: ["React", "TypeScript", "TanStack Start", "Vite", "Tailwind CSS", "Supabase", "Framer Motion"],
-    image: "", // Set to "/images/clinica-cali.png" when the site screenshot is available.
+    image: "/images/clinica-cali.png",
     liveUrl: "https://www.clinicacali.com/",
     githubUrl: "https://github.com/juanjosbg/radiant-hospital-vision",
     repositoryStatus: "private",
     status: "active",
     featured: true,
+  },
+  {
+    title: "Aurora Plastics · Sistema de Control",
+    description: {
+      es: "Sistema de control de compras de PET para una empresa de manufactura de plásticos, desarrollado en equipo. Centraliza el registro y seguimiento de las compras, con un frontend en React + Vite conectado a una API propia. Lideré el desarrollo del frontend y la interfaz, mientras mi compañero se encargó del backend. Proyecto privado bajo contrato con el cliente, por lo que no hay demo pública.",
+      en: "PET purchasing control system for a plastics manufacturing company, built as a team. It centralizes purchase tracking and records, with a React + Vite frontend connected to a custom API. I led the frontend and UI development while my teammate handled the backend. Private project under client contract, so there is no public demo.",
+    },
+    tech: ["React", "Vite", "TypeScript", "Node.js", "GraphQL", "Docker"],
+    image: "", // No screenshot due to client confidentiality.
+    liveUrl: null,
+    githubUrl: null,
+    repositoryStatus: "private",
+    status: "building",
+    featured: false,
   },
   {
     title: "Noe",
@@ -140,7 +154,7 @@ export const projects: Project[] = [
       en: "Institutional website for Clínica Noé patients and families, with a medical services catalog, patient guidance, and diagnostic imaging information. It brings together appointment request channels, access to the results portal, institutional information, and care resources in a mobile-friendly experience.",
     },
     tech: ["React", "TypeScript", "TanStack Start", "Vite", "Tailwind CSS", "Radix UI"],
-    image: "", // Set to "/images/noe.png" when the site screenshot is available.
+    image: "/images/noe.png", // Captured from the local production build.
     liveUrl: null, // TODO: add a confirmed public demo.
     githubUrl: "https://github.com/juanjosbg/Clinica-noe",
     repositoryStatus: "public",
