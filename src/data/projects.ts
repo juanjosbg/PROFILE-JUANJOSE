@@ -30,6 +30,20 @@ export const projects: Project[] = [
     awardUrl: "/certifications",
   },
   {
+    title: "Gym Bot (My Gym/Sis · Gym Bro)",
+    description: {
+      es: "Aplicación desarrollada para un concurso de acondicionamiento físico en el que se participa actualmente. Ofrece entrenamiento, nutrición y bienestar personalizados a través de dos experiencias, My Gym/Sis y Gym Bro, con metas de calorías ajustadas y rutinas que incluyen ilustraciones de cada ejercicio.",
+      en: "App developed for a fitness competition it is currently taking part in. It offers personalized training, nutrition, and wellness through two experiences, My Gym/Sis and Gym Bro, with tailored calorie goals and workout routines that include illustrations for each exercise.",
+    },
+    tech: ["React", "TypeScript", "Vite", "Supabase", "Tailwind CSS", "IA", "Vercel"],
+    image: "", // Set to "/images/gym-bot.png" when the app screenshot is available.
+    liveUrl: "https://my-gym-sis-bro-agent.vercel.app/login",
+    githubUrl: "https://github.com/marimarketingdigitalw3/My-gym-Sis-Bro-Agent",
+    repositoryStatus: "public",
+    status: "active",
+    featured: true,
+  },
+  {
     title: "Loki Ecommerce",
     description: {
       es: "E-commerce para marca de moda con autenticación OTP, pagos vía API e inventario por SKU en Supabase. Incluye una capa completa de crecimiento digital con SEO técnico, Google Tag Manager, Google Analytics 4 y Google Search Console, además de automatizaciones con n8n e integración de reels en tiempo real desde Instagram.",
@@ -53,6 +67,20 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/juanjosbg/Loki-Ecommerce",
     repositoryStatus: "private",
     status: "building",
+    featured: true,
+  },
+  {
+    title: "Clínica Colombia",
+    description: {
+      es: "Plataforma interna para Clínica Colombia con gestión de empleados, usuarios y permisos, un módulo de Humanización y módulos de Educación, ATENEA e Inducción. Combina un frontend en React/Vite y una API en Node.js con datos distribuidos entre Supabase y Neon sobre PostgreSQL.",
+      en: "Internal platform for Clínica Colombia with employee, user, and permission management, a Humanization module, and Education, ATENEA, and Onboarding modules. It combines a React/Vite frontend and a Node.js API with data distributed between Supabase and Neon on PostgreSQL.",
+    },
+    tech: ["React", "Vite", "TypeScript", "Node.js", "PostgreSQL", "Supabase", "Neon", "Vercel"],
+    image: "", // Set to "/images/clinica-colombia.png" when the app screenshot is available.
+    liveUrl: "https://www.clinicacolombiaes.com/",
+    githubUrl: "https://github.com/juanjosbg/ClinicaColombiaEs",
+    repositoryStatus: "private",
+    status: "active",
     featured: true,
   },
   {
@@ -85,11 +113,39 @@ export const projects: Project[] = [
       "n8n",
     ],
     image: "/images/Gp3.png",
-    liveUrl: "https://gp3-app.vercel.app/",
+    liveUrl: null, // TODO: restore the demo URL when the site is republished.
     githubUrl: "https://github.com/Gp3Marketing/Gp3App",
     repositoryStatus: "private",
     status: "active",
     featured: true,
+  },
+  {
+    title: "Clínica Cali",
+    description: {
+      es: "Sitio institucional para pacientes y familias de Clínica Cali, con información de servicios médicos, especialistas y orientación al usuario. Incluye acceso al portal de resultados, canales de contacto y participación social, además de un panel para administrar vacantes con Supabase.",
+      en: "Institutional website for Clínica Cali patients and families, with information on medical services, specialists, and patient guidance. It includes access to the results portal, contact and community participation channels, plus a Supabase-backed panel for managing job openings.",
+    },
+    tech: ["React", "TypeScript", "TanStack Start", "Vite", "Tailwind CSS", "Supabase", "Framer Motion"],
+    image: "", // Set to "/images/clinica-cali.png" when the site screenshot is available.
+    liveUrl: "https://www.clinicacali.com/",
+    githubUrl: "https://github.com/juanjosbg/radiant-hospital-vision",
+    repositoryStatus: "private",
+    status: "active",
+    featured: true,
+  },
+  {
+    title: "Noe",
+    description: {
+      es: "Sitio institucional para pacientes y familias de Clínica Noé, con un catálogo de servicios médicos, orientación al paciente e información de imágenes diagnósticas. Reúne canales de solicitud de citas, acceso al portal de resultados, información institucional y recursos de atención en una experiencia adaptable a móviles.",
+      en: "Institutional website for Clínica Noé patients and families, with a medical services catalog, patient guidance, and diagnostic imaging information. It brings together appointment request channels, access to the results portal, institutional information, and care resources in a mobile-friendly experience.",
+    },
+    tech: ["React", "TypeScript", "TanStack Start", "Vite", "Tailwind CSS", "Radix UI"],
+    image: "", // Set to "/images/noe.png" when the site screenshot is available.
+    liveUrl: null, // TODO: add a confirmed public demo.
+    githubUrl: "https://github.com/juanjosbg/Clinica-noe",
+    repositoryStatus: "public",
+    status: "active",
+    featured: false,
   },
   {
     title: "CIMELCO",
