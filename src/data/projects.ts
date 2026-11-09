@@ -55,6 +55,8 @@ export const projects: Project[] = [
       "Supabase",
       "Node.js",
       "Vercel",
+      "AWS",
+      "Meta",
       "Technical SEO",
       "GA4",
       "GTM",
